@@ -47,3 +47,18 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* CSS for MovieList */
+
+.flex{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;  /*boxes move around according to screen size*/
+}
+
+.flex > *{ /*the > * means all elements inside the flex box*/
+  font-size: 30px;
+  width: 100px;
+  text-align: center;
+}
