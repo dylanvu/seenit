@@ -44,7 +44,7 @@
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color: #000;
+  background-color: #282c34;
 }
 
 .movie:hover .overlay {
@@ -61,6 +61,8 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 @keyframes App-logo-spin {
