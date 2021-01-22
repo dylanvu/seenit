@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Movie from './components/movie.jsx'
+import Movie from './components/Movie.jsx'
 
 var movies = {
-  url: "https://images.fandango.com/ImageRenderer/200/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/223960/FND_poster_TheMarksman_InTheaters.jpg"
+  title: "Wonder Woman 1984",
+  url: "https://images.fandango.com/ImageRenderer/200/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/212474/FND_poster_WonderWoman84_InTheaters.jpg"
 }
 
 // Note that App() must return only a single set
@@ -26,9 +27,8 @@ function App() {
             Learn React
           </a>
         </header>
-        <Movie url={movies.url}/>
+          <Movie title={movies.title} url={movies.url}/>
       </div>
-    
   );
 }
 
