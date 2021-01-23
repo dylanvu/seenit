@@ -15,7 +15,7 @@ function Movie(props) {
             <img src={props.url} alt={image_name} width="200" height="296"/>
             <a href={props.url}>
                 <div class="overlay">
-                    <div class="movie_text">{props.title}</div>
+                    <div class="movieText">{props.title}</div>
                 </div>
             </a>
         </div>
