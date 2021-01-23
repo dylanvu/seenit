@@ -8,11 +8,11 @@ var interstellar = {
 
 const MovieList = (props) => {
     return (
-        <div>
-            <div className = "movieListTitle">
-                <header >{props.listName}</header>
+        <div className = "movieList-container">
+            <div className = "movieListTitle-container">
+                <div className = "movieListTitle">{props.listName}</div>
             </div>
-            <div className = "flex">
+            <div className = "movie-container">
                 <Movie url = {interstellar.url} name = {interstellar.name}/>
                 <Movie url = {interstellar.url} name = {interstellar.name}/>
                 <Movie url = {interstellar.url} name = {interstellar.name}/>
