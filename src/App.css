@@ -28,7 +28,7 @@
   color: #61dafb;
 }
 
-/* code for hover overlay from https://www.w3schools.com/howto/howto_css_image_overlay.asp*/ 
+/* code for hover overlay adapted from https://www.w3schools.com/howto/howto_css_image_overlay.asp*/ 
 
 .movie {
   position: relative;
@@ -40,10 +40,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100%;
-  width: 100%;
+  /* height: 296px;
+  width: 200px; */
   opacity: 0;
-  transition: .5s ease;
+  transition: .25s ease;
   background-color: #282c34;
 }
 
@@ -53,7 +53,8 @@
 
 .movie_text {
   color: white;
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 17px;
   position: absolute;
   top: 50%;
   left: 50%;
