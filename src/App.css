@@ -28,15 +28,42 @@
   color: #61dafb;
 }
 
+/* code for hover overlay adapted from https://www.w3schools.com/howto/howto_css_image_overlay.asp*/ 
+
 .movie {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+  position: relative;
 }
 
-/* On mouse-over, add a deeper shadow */
-.movie:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* height: 296px;
+  width: 200px; */
+  opacity: 0;
+  transition: .25s ease;
+  background-color: #282c34;
+}
+
+.movie:hover .overlay {
+  opacity: 0.9;
+}
+
+.movieText {
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 @keyframes App-logo-spin {
