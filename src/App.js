@@ -1,6 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Movie from './components/movie.jsx'
+import Movie from './components/Movie.jsx'
+import MovieList from './components/MovieList.js'
 
 var movies = {
   url: "https://images.fandango.com/ImageRenderer/200/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/223960/FND_poster_TheMarksman_InTheaters.jpg"
@@ -12,23 +13,9 @@ var movies = {
 function App() {
   return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <MovieList listName = "Top Rated Movies"/>
         <Movie url={movies.url}/>
       </div>
-    
   );
 }
 

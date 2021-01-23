@@ -47,3 +47,34 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* CSS for MovieList */
+
+.movieList-container{
+  width: 80%;
+  border: 2px solid #4d648d;
+  background-color: #d0e1f9;
+  border-radius: 25px;
+  margin: 40px auto 0 auto;
+  padding: 15px;
+}
+
+.movieListTitle-container{
+  display: flex;
+  text-align: center;
+  padding: 10px;
+}
+
+.movieListTitle{
+  margin: auto;
+}
+
+.movie-container{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;  /*boxes move around according to screen size*/
+}
+
+
+
