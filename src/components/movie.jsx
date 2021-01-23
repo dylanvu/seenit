@@ -12,7 +12,7 @@ function Movie(props) {
 
     return(
         <div class="movie">
-            <img src={props.url} alt={image_name} width="200" height="296"/>
+            <img src={props.url} alt={image_name} class="moviePoster"/>
             <a href={props.url}>
                 <div class="overlay">
                     <div class="movieText">{props.title}</div>
