@@ -16,6 +16,7 @@ function App() {
       <div className="App">
         <MovieList listName = "Top Rated Movies"/>
         <Movie title={movies.title} url={movies.url}/>
+        <button type="button">Sign into SeenIt</button>
       </div>
   );
 }
