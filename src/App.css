@@ -31,10 +31,12 @@ html {
   color: #61dafb;
 }
 
+/* CSS for individual posters */
 /* code for hover overlay adapted from https://www.w3schools.com/howto/howto_css_image_overlay.asp*/ 
 
 .movie {
   position: relative;
+  border-radius: 15px;
 }
 
 .overlay {
@@ -48,10 +50,14 @@ html {
   opacity: 0;
   transition: .25s ease;
   background-color: #282c34;
+  border-radius: 15px;
+  width: 200px;
+  height: 296px;
 }
 
 .movie:hover .overlay {
   opacity: 0.9;
+  border-radius: 15px;
 }
 
 .movieText {
@@ -90,6 +96,8 @@ html {
 
 .movieListTitle{
   margin: auto;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .movie-container{
@@ -101,5 +109,6 @@ html {
 .moviePoster{
   width: 200px;
   height: 296px;
+  border-radius: 15px;
 }
 
