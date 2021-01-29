@@ -12,31 +12,20 @@ import {Link} from "react"
                 <Movie url = {interstellar.url} title = {interstellar.title}/>
 */
 
-const MovieList = (props) => {
+
+const MovieList = ({list,name}) => {
     return (
         <div className = "movieList-container">
             <div className = "movieListTitle-container">
-                <div className = "movieListTitle">{props.listName}</div>
+                <div className = "movieListTitle">{name}</div>
             </div> 
             <div className = "movie-container">
-                <Movie url = {props.moviesList.url} title = {props.moviesList.title}/>
-                <Movie url = {props.moviesList.url } title = {props.moviesList.title}/>
-                <Movie url = {props.moviesList.url} title = {props.moviesList.title}/>
-                <Movie url = {props.moviesList.url} title = {props.moviesList.title}/>
-                <Movie url = {props.moviesList.url} title = {props.moviesList.title}/>
+                {list.map((movies) => (
+                    <Movie key={movies.id} url = {movies.url} title = {movies.movie} />
+                ))}
             </div>
         </div>
     )
 }
-
-MovieList.defaultProps = {
-    listName: 'List Name',
-}
-
-MovieList.propTypes = {
-    listName: PropTypes.string,
-}
-
-
 
 export default MovieList
