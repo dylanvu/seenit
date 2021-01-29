@@ -5,6 +5,7 @@ import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import Logo from './components/Logo.js';
 import UserPage from './components/UserPage.js';
+import ReviewList from './components/ReviewList.jsx';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -28,13 +29,14 @@ function App() {
     <Router>
       <Logo />
       <h1 className="title">SeenIt</h1>
-      <p className="subheading">The Social Movie Network in React</p>
+      <p className="subheading">The Social Movie Network—in React</p>
       <div style={{}}>
         <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)}/>
         {loggedIn ? <p>Hello {name}</p>: <p>Not logged in</p> }
         <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)}/>
       </div>
-      <Link>Go to User Page Test</Link>
+      <Link to="/User">Go to User Page Test</Link>
+      <ReviewList />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/Login" component={Loginpage} />

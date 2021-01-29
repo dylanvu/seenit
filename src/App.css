@@ -34,21 +34,6 @@ html {
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 /* CSS for individual posters */
 /* code for hover overlay adapted from https://www.w3schools.com/howto/howto_css_image_overlay.asp*/ 
 
@@ -130,3 +115,47 @@ html {
   border-radius: 15px;
 }
 
+/* CSS for ReviewList and Review */
+
+.ReviewList {
+  background-color: #CCE3DE;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-radius: 25px;
+  width: 95%;
+}
+
+.ReviewContainer {
+  background-color: #A4C3B2;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 25px;
+  margin: 25px;
+  transition: transform .2s; 
+}
+
+.ReviewContainer h2 {
+  font-size: 22px;
+}
+
+.ReviewContainer:hover {
+  transform: scale(1.01);
+}
+
+.Review {
+  margin-left: 40px;
+}
+
+.ReviewContent {
+  /* color: #F6FFF8; */
+  color: #262626;
+  font-style: italic;
+  margin-left: 40px;
+  font-size: 18px;
+}
+
+.stars {
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+}

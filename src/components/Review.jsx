@@ -8,11 +8,16 @@ import React from 'react'
 
 const Review = (props) => {
     return (
-        <div>
-            <h2>{props.movieTitle}</h2>
-            <p>{props.reviewContent}</p>
-            <p>Stars: {props.stars}</p>
+        <div id="ReviewContainerShadow">
+            <div className="ReviewContainer">
+                <div className="Review">
+                    <h2>{props.movieTitle}</h2>
+                    <q className="ReviewContent">{props.reviewContent}</q>
+                    <p className="stars">Stars: {props.stars}</p>
+                </div>
+            </div>
         </div>
+
     )
 }
 
