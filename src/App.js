@@ -3,9 +3,7 @@ import Homepage from './components/Homepage.jsx';
 import Loginpage from './components/Loginpage.jsx';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
-import Logo from './components/Logo.js';
 import UserPage from './components/UserPage.js';
-import ReviewList from './components/ReviewList.jsx';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,

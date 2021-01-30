@@ -12,11 +12,24 @@ html {
   background-color: #EAF4F4
 }
 
+/* CSS for the logo/header */
 .title {
   padding-bottom: 0px;
   margin-bottom: 0px;
-  text-align: center;
+  margin-left: 0px;
   font-size: 80px;
+}
+
+.subheading {
+  font-size: 30px;
+  margin-bottom: 0px;
+}
+
+p.heading img {
+  margin-left: 5%;
+  margin-right: 25px;
+  float: left;
+  border-radius: 15px;
 }
 
 .login-buttons{
@@ -25,20 +38,11 @@ html {
 }
 
 
-.subheading {
-  text-align: center;
-  font-size: 30px;
-  margin-bottom: 0px;
-}
-
 .Button {
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.App {
-  text-align: center;
-}
 
 /* CSS for individual posters */
 /* code for hover overlay adapted from https://www.w3schools.com/howto/howto_css_image_overlay.asp*/ 
