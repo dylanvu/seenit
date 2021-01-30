@@ -12,7 +12,6 @@ import {Link} from "react"
                 <Movie url = {interstellar.url} title = {interstellar.title}/>
 */
 
-
 const MovieList = ({list,name}) => {
     return (
         <div className = "movieList-container">

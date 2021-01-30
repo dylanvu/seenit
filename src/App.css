@@ -19,6 +19,12 @@ html {
   font-size: 80px;
 }
 
+.login-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
 .subheading {
   text-align: center;
   font-size: 30px;
