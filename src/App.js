@@ -26,15 +26,11 @@ function App() {
 
   return (
     <Router>
-      <Logo />
-      <h1 className="title">SeenIt</h1>
-      <p className="subheading">The Social Movie Network in React</p>
-      <div style={{}}>
+      <div className = "login-buttons">
         <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)}/>
         {loggedIn ? <p>Hello {name}</p>: <p>Not logged in</p> }
         <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)}/>
       </div>
-      <Link>Go to User Page Test</Link>
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/Login" component={Loginpage} />

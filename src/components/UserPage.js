@@ -36,13 +36,12 @@ const UserPage = () => {
         <div>
             <div className="user">
                 <UserPic />
-                <p>Dylan Vu</p>
+                <img src ="https://i.ytimg.com/vi/4y_lc8m4vSc/hqdefault.jpg" />
+                <h3>Alex Mei</h3>
                 <AboutMe />
             </div>
             
             <div className="MyMovies">
-                <MovieList />
-                <MovieList />
             </div>
 
             <div className="MyReviews">
