@@ -1,6 +1,7 @@
 import React from 'react'
 import MovieList from './MovieList'
 import Button from "react-bootstrap/Button";
+import Logo from './Logo.js';
 import { useState } from 'react'
 
 import {Link} from "react-router-dom";
@@ -38,10 +39,14 @@ const Homepage = () => {
 
     return (
     <div className="App">
+        <Logo />
+        <h1 className="title">SeenIt</h1>
+        <p className="subheading">The Social Movie Network in React</p>
         <Button className="Button">
             <Link to="/Login">Log in here</Link>
         </Button>
         <MovieList list = {movies} name = {listName} />
+        <Link to = "/User">Go to User Page Test</Link>
     </div>
     )
 }
