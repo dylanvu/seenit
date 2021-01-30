@@ -18,11 +18,18 @@ html {
   margin-bottom: 0px;
   margin-left: 0px;
   font-size: 80px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 .subheading {
   font-size: 30px;
   margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+p.heading {
+  margin-top: 5px;
 }
 
 p.heading img {
@@ -31,6 +38,8 @@ p.heading img {
   float: left;
   border-radius: 15px;
 }
+
+/* -------------- */
 
 .login-buttons{
   display: flex;

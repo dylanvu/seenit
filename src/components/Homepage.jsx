@@ -38,7 +38,7 @@ const Homepage = () => {
 
 
     return (
-    <div className="App">
+    <div>
         <Logo />
         <Button className="Button">
             <Link to="/Login">Log in here</Link>

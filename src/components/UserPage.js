@@ -35,7 +35,7 @@ const UserPage = () => {
     return(
         <div>
             <div className="user">
-                <UserPic />
+                {/* <UserPic /> Disabled this component for now since it is broken*/}
                 <img src ="https://i.ytimg.com/vi/4y_lc8m4vSc/hqdefault.jpg" />
                 <h3>Alex Mei</h3>
                 <AboutMe />
