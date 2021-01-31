@@ -34,8 +34,10 @@ function App() {
       <Logo />
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/Login" component={Loginpage} />
-        <Route exact path="/User" component={UserPage} />
+        <Route exact path="/Login" component={Loginpage}></Route>
+        <Route exact path="/User">
+          <UserPage name={loggedIn ? name: "Not logged in"}/>
+        </Route>
       </Switch>
     </Router>
   );
