@@ -30,10 +30,11 @@ html {
 
 p.heading {
   margin-top: 5px;
+  background-color: #6B9080;
 }
 
 p.heading img {
-  margin-left: 5%;
+  margin-left: 1%;
   margin-right: 25px;
   float: left;
   border-radius: 15px;

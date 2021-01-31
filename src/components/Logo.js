@@ -4,7 +4,8 @@ import logo from './logo.png'
 
 function Logo(){
     return(
-            <p className="heading"><img src = {logo} height="140"/>
+            <p className="heading">
+                <img src = {logo} height="140"/>
                 <h1 className="title">SeenIt</h1>
                 <p className="subheading">The Social Movie Network in React</p>
             </p>

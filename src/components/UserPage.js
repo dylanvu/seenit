@@ -51,7 +51,7 @@ const UserPage = () => {
         }
     ])
 
-    const listName = "My Top-Rated Movies"
+const listName = "My Top-Rated Movies"
 
     return(
         <div class="UserPageFlex">

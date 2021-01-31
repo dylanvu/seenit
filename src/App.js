@@ -1,5 +1,5 @@
-
 import Homepage from './components/Homepage.jsx';
+import Logo from './components/Logo.js';
 import Loginpage from './components/Loginpage.jsx';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
@@ -12,6 +12,7 @@ import {
   Link
 } from "react-router-dom";
 import { render } from '@testing-library/react';
+
 
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
         {loggedIn ? <p>Hello {name}</p>: <p>Not logged in</p> }
         <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)}/>
       </div>
+      <Logo />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/Login" component={Loginpage} />
