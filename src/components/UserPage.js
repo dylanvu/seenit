@@ -58,7 +58,7 @@ const listName = "My Top-Rated Movies"
             <div className="user">
                 {/* <UserPic /> Disabled this component for now since it is broken*/}
                 <img src ="https://i.ytimg.com/vi/4y_lc8m4vSc/hqdefault.jpg" />
-                <h3>{props.name}</h3>
+                <h3 style={{fontSize: "40px"}}>{props.name}</h3>
                 <AboutMe />
             </div>
             <div className="UserContent">
