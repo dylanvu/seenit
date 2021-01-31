@@ -112,7 +112,6 @@ p.heading img {
 
 .movieListTitle-container{
   display: flex;
-  text-align: center;
   padding: 10px;
 }
 
@@ -120,6 +119,7 @@ p.heading img {
   margin: auto;
   font-weight: bold;
   font-size: 30px;
+  text-align: center;
 }
 
 .movie-container{
@@ -134,6 +134,27 @@ p.heading img {
   border-radius: 15px;
 }
 
+/* CSS for UserPage */
+
+.UserPageFlex {
+  display: flex;
+}
+
+.user {
+  border: solid green;
+  flex: 30%;
+  padding: 10px;
+}
+
+.UserContent {
+  border: solid black;
+  flex: 80%;
+  padding: 10px;
+}
+
+.AboutMe {
+  border: solid purple;
+}
 /* CSS for ReviewList and Review */
 
 .ReviewList {

@@ -22,6 +22,7 @@ let reviews = [{
 const ReviewList = () => {
     return (
         <div className="ReviewList">
+            <div className = "movieListTitle">My Recent Reviews</div>
             {reviews.map ((review) => (
             <Review movieTitle = {review.movieTitle}
             reviewContent = {review.reviewContent}

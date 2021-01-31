@@ -6,18 +6,6 @@ import { useState } from 'react'
 
 import {Link} from "react-router-dom";
 
-let topMovies = {
-    listName: "Top Rated Movies",
-    moviesList: {
-        url: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
-        title: "Interstellar"
-    }
-}
-
-
-
-const listName = "Top Rated Movies"
-
 const Homepage = () => {
 
 
@@ -31,20 +19,25 @@ const Homepage = () => {
             id: 2,
             movie: "Your Name",
             url: "https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png"
+        },
+        {
+            id: 3,
+            movie: "Interstellar",
+            url: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
         }
     ])
 
-    const listName = "Top Rated Movies"
+    const listName = "Top User-Rated Movies"
 
 
     return (
     <div>
         <Logo />
-        <Button className="Button">
-            <Link to="/Login">Log in here</Link>
-        </Button>
-        <MovieList list = {movies} name = {listName} />
         <Link to = "/User">Go to User Page Test</Link>
+        {/* <Button className="Button">
+            <Link to="/Login">Log in here</Link>
+        </Button> */}
+        <MovieList list = {movies} name = {listName} />
     </div>
     )
 }
