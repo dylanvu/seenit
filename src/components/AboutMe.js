@@ -3,8 +3,8 @@
 function AboutMe(){
     return(
         <div className="AboutMe">
-            <h3>about me</h3>
-            <p>im alex mei and i love coding </p>
+            <h3>About Me</h3>
+            <p>User Bio Here</p>
         </div>
         
     )

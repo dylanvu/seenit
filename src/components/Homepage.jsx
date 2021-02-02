@@ -33,9 +33,9 @@ const Homepage = () => {
     return (
     <div>
         {/* <Logo /> */}
-        <p style={{textAlign: "center"}}>
+        {/* <p style={{textAlign: "center"}}>
             <Link to = "/User">Go to User Page Test</Link>
-        </p>
+        </p> */}
         {/* <Button className="Button">
             <Link to="/Login">Log in here</Link>
         </Button> */}

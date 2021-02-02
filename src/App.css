@@ -12,6 +12,30 @@ html {
   background-color: #EAF4F4
 }
 
+/* CSS for a custom scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #83af9c; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #536e62; 
+}
+
 /* CSS for the logo/header */
 .title {
   padding-bottom: 0px;
@@ -28,16 +52,21 @@ html {
   margin-top: 0px;
 }
 
-p.heading {
+div.heading {
   margin-top: 5px;
   background-color: #6B9080;
+  display: flex;
 }
 
-p.heading img {
+div.heading img {
   margin-left: 1%;
   margin-right: 25px;
   float: left;
   border-radius: 15px;
+}
+
+.headingCol {
+  flex: 50%;
 }
 
 /* -------------- */
@@ -142,28 +171,32 @@ p.heading img {
 }
 
 .user {
-  border: solid green;
+  /* border: solid green; */
   flex: 30%;
   padding: 10px;
 }
 
 .UserContent {
-  border: solid black;
+  /* border: solid black; */
   flex: 80%;
   padding: 10px;
 }
 
 .AboutMe {
-  border: solid purple;
+  /* border: solid purple; */
+  background-color: #A4C3B2;
+  border-radius: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 /* CSS for ReviewList and Review */
 
 .ReviewList {
   background-color: #CCE3DE;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  margin: 40px auto 0 auto;
+  padding: 15px;
   border-radius: 25px;
-  width: 95%;
+  width: 80%;
 }
 
 .ReviewContainer {

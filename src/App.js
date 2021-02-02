@@ -28,7 +28,7 @@ function App() {
     <Router>
       <div className = "login-buttons">
         <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)}/>
-        {loggedIn ? <p>Hello {name}</p>: <p>Not logged in</p> }
+        {loggedIn ? <p>Hello {name}</p>: <p>&nbsp;Not logged in. Please log in.&nbsp;</p> }
         <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)}/>
       </div>
       <Logo />
