@@ -170,17 +170,22 @@ div.heading img {
   display: flex;
 }
 
+  /* CSS for the left content */
+
 .user {
   /* border: solid green; */
   flex: 30%;
   padding: 10px;
 }
 
+  /* CSS for the right content */
 .UserContent {
   /* border: solid black; */
   flex: 80%;
   padding: 10px;
 }
+
+  /* CSS for individual sections */
 
 .AboutMe {
   /* border: solid purple; */
@@ -189,6 +194,7 @@ div.heading img {
   padding-top: 25px;
   padding-bottom: 25px;
 }
+
 /* CSS for ReviewList and Review */
 
 .ReviewList {
