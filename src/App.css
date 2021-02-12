@@ -66,7 +66,7 @@ div.heading img {
 }
 
 .headingCol {
-  flex: 50%;
+  flex: auto;
 }
 
 /* -------------- */
@@ -174,7 +174,7 @@ div.heading img {
 
 .user {
   /* border: solid green; */
-  flex: 30%;
+  flex: 20%;
   padding: 10px;
 }
 
@@ -238,4 +238,55 @@ div.heading img {
   font-weight: bold;
   text-align: center;
   font-size: 18px;
+}
+
+/* CSS for MoviePage */
+
+.MoviePageFlex {
+  display: flex;
+}
+
+  /* CSS for the left content */
+
+.MovieImage {
+  /* border: solid green; */
+  flex: 30%;
+  padding: 10px;
+}
+
+.MoviePagePoster {
+  width: 500px;
+  height: 725px;
+  border-radius: 15px;
+}
+
+  /* CSS for the right content */
+.MovieContent {
+  /* border: solid black; */
+  flex: 80%;
+  margin: 10px;
+  background-color: #CCE3DE;
+  border-radius: 25px;
+}
+
+  /* CSS for the title of the movie */
+.MovieContent h1 {
+  text-align: center;
+  font-size: 50px;
+  color: black;
+}
+  /* CSS for plain text in the MoviePage */
+.MovieContent p {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+  /* CSS for subheaders */
+.MovieContent h2 {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.MovieContent h2 span {
+  font-size: 20px;
 }

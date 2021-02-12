@@ -4,6 +4,7 @@ import Loginpage from './components/Loginpage.jsx';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import UserPage from './components/UserPage.js';
+import MoviePage from './components/MoviePage';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -35,7 +36,8 @@ function App() {
       <Logo />
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/Login" component={Loginpage}></Route>
+        <Route exact path="/Movie" component={MoviePage} />
+        <Route exact path="/Login" component={Loginpage} />
         <Route exact path="/User">
           <UserPage name={loggedIn ? name: "Not logged in"} picURL={loggedIn ? picURL: "https://i.stack.imgur.com/34AD2.jpg"}/>
         </Route>
