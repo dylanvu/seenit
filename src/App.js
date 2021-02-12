@@ -22,14 +22,14 @@ import './App.css';
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
-  const [name, setName] = useState('Dylan');
+  const [name, setName] = useState();
 
   return (
     <Router>
       <div className = "login-buttons">
-        <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)}/>
-        {loggedIn ? <p>Hello {name}</p>: <p>&nbsp;Not logged in. Please log in.&nbsp;</p> }
-        <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)}/>
+        {loggedIn ? <p>&nbsp;Hello {name}&nbsp;</p>: <p>&nbsp;Not logged in. Please log in.&nbsp;</p> }
+        {loggedIn ? <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)}/>: 
+        <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)}/>}
       </div>
       <Logo />
       <Switch>

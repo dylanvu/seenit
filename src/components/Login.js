@@ -10,16 +10,16 @@ function Login(props) {
 
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully! Welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
+    // alert(
+    //   `Logged in successfully! Welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    // );
     refreshTokenSetup(res);
     props.setLoggedIn(true);
     props.setName(res.profileObj.name)
   };
 
   const onFailure = (res) => {
-    console.log('Login fa iled: res:', res);
+    console.log('Login failed: res:', res);
     alert(
       `Failed to login 😢. Please try again`
     );
