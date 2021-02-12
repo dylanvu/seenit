@@ -33,12 +33,14 @@ function App() {
         {loggedIn ? <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} />: 
         <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)} picURL={picURL} setURL={(url) => setURL(url)}/>}
       </div>
+      {/* Most likely move the logo component outside so that it'll be easy to merge the google login button into a nav bar? */}
       <Logo />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/Movie" component={MoviePage} />
         <Route exact path="/Login" component={Loginpage} />
         <Route exact path="/User">
+          {/* If the user is not logged in, make the props a "not logged in" and default picture */}
           <UserPage name={loggedIn ? name: "Not logged in"} picURL={loggedIn ? picURL: "https://i.stack.imgur.com/34AD2.jpg"}/>
         </Route>
       </Switch>

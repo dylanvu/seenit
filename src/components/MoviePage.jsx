@@ -1,5 +1,10 @@
 import React from 'react'
 
+// Props should likely have properties:
+// URL (for image poster)
+// Name (For movie title)
+// Summary? Director? Writer? Actors? Not sure how this will work. Likely depends on how the data we obtain is formatted.
+
 const MoviePage = () => {
     return (
         <div className="MoviePageFlex">
