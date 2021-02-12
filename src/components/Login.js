@@ -16,6 +16,7 @@ function Login(props) {
     refreshTokenSetup(res);
     props.setLoggedIn(true);
     props.setName(res.profileObj.name)
+    props.setURL(res.profileObj.imageUrl)
   };
 
   const onFailure = (res) => {

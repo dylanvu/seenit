@@ -23,20 +23,21 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
   const [name, setName] = useState();
+  const [picURL, setURL] = useState();
 
   return (
     <Router>
       <div className = "login-buttons">
         {loggedIn ? <p>&nbsp;Hello {name}&nbsp;</p>: <p>&nbsp;Not logged in. Please log in.&nbsp;</p> }
-        {loggedIn ? <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)}/>: 
-        <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)}/>}
+        {loggedIn ? <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} />: 
+        <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)} picURL={picURL} setURL={(url) => setURL(url)}/>}
       </div>
       <Logo />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/Login" component={Loginpage}></Route>
         <Route exact path="/User">
-          <UserPage name={loggedIn ? name: "Not logged in"}/>
+          <UserPage name={loggedIn ? name: "Not logged in"} picURL={loggedIn ? picURL: "https://i.stack.imgur.com/34AD2.jpg"}/>
         </Route>
       </Switch>
     </Router>
