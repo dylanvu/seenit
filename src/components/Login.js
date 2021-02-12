@@ -43,3 +43,18 @@ function Login(props) {
 }
 
 export default Login;
+
+// Possible methods from login: (from react-google-login, the use-google-login.js)
+
+// res.googleId = basicProfile.getId()
+// res.tokenObj = authResponse
+// res.tokenId = authResponse.id_token
+// res.accessToken = authResponse.access_token
+// res.profileObj = {
+//   googleId: basicProfile.getId(),
+//   imageUrl: basicProfile.getImageUrl(),
+//   email: basicProfile.getEmail(),
+//   name: basicProfile.getName(),
+//   givenName: basicProfile.getGivenName(),
+//   familyName: basicProfile.getFamilyName()
+// }
