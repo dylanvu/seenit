@@ -22,21 +22,32 @@ import './App.css';
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
-  const [name, setName] = useState('Dylan');
+  const [googleObj, setGoogleObj] = useState()
+  const [name, setName] = useState();
+  const [picURL, setURL] = useState();
 
   return (
     <Router>
       <div className = "login-buttons">
-        <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)}/>
-        {loggedIn ? <p>Hello {name}</p>: <p>&nbsp;Not logged in. Please log in.&nbsp;</p> }
-        <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)}/>
+        {/* {loggedIn ? <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/> : 
+        <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setName={(name) => setName(name)} picURL={picURL} setURL={(url) => setURL(url)} 
+          setGoogleObj={(obj) => setGoogleObj(obj)}/>}
+        {loggedIn ? <p>&nbsp;Hello {googleObj.name}&nbsp;</p>: <p>&nbsp;Not logged in. Please log in.&nbsp;</p> } */}
+
+
+        {loggedIn ? 
+        <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>
+        :
+        <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
+        <p>{googleObj ? `Welcome ${googleObj.name}!` : `not logged in`}</p>
+        
       </div>
       <Logo />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/Login" component={Loginpage}></Route>
         <Route exact path="/User">
-          <UserPage name={loggedIn ? name: "Not logged in"}/>
+          {googleObj ? <UserPage googleObj = {googleObj} /> : <p>Please log in</p>}
         </Route>
       </Switch>
     </Router>
@@ -47,3 +58,5 @@ export default App;
 
 {/* <h1 className="title">SeenIt</h1>
 <p className="subheading">The Social Movie Network—in React</p> */}
+
+// Note: we have an issue with MovieList and MyMovieList. Right now, we aren't passing googleProfileObj into MovieList (which is why the button doesn't work to add the movie to the database)
