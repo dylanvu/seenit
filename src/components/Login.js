@@ -1,47 +1,64 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import "../Login.css";
-import {Link} from "react-router-dom"
+import React, { useState } from 'react'
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+import { GoogleLogin } from 'react-google-login';
+// refresh token
+import { refreshTokenSetup } from '../utils/refreshToken';
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
+import database from '../firebase';
+
+const clientId = process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID;
+
+function Login(props) {
+
+  const onSuccess = (res) => {
+    console.log('Login Success: currentUser:', res.profileObj);
+    alert(
+      `Logged in successfully! Welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    );
+    refreshTokenSetup(res);
+    props.setLoggedIn(true);
+    props.setGoogleObj(res.profileObj);
+    props.setName(res.profileObj.name);
+    props.setURL(res.profileObj.imageUrl);
+  };
+
+  const onFailure = (res) => {
+    console.log('Login fa iled: res:', res);
+    alert(
+      `Failed to login 😢. Please try again`
+    );
+  };
+
+  //TODO: check if user exist in the data base, if not, add user to the data base
+  //maybe we don't need this?
+  /*
+  const addUser = (res) => {
+    database.ref(`/users/${res.profileObj.googleId}/userInfo`).push(
+      {
+        email = res.profileObj.email,
+        familyName = res.profileObj.familyName,
+        givenName: res.profileObj.givenName,
+        googleId = res.profileObj.googleId,
+        imageUrl = res.profileObj.imageUrl,
+        name = res.profileObj.name,
+      }
+    )
   }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
+  */
+  
   return (
-    <div className="Login">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
-          <Form.Label>Email: </Form.Label>
-          <Form.Control
-            autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Password: </Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <Link to ="/">
-          <Button block size="lg" type="submit" disabled={!validateForm()}>
-            Login
-          </Button>
-        </Link>
-      </Form>
+
+    <div>
+      <GoogleLogin
+        clientId={clientId}
+        buttonText="Login"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={'single_host_origin'}
+        isSignedIn={true}
+      />
     </div>
   );
 }
+
+export default Login;

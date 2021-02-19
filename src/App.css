@@ -12,42 +12,76 @@ html {
   background-color: #EAF4F4
 }
 
+/* CSS for a custom scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #83af9c; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #536e62; 
+}
+
+/* CSS for the logo/header */
 .title {
   padding-bottom: 0px;
   margin-bottom: 0px;
-  text-align: center;
+  margin-left: 0px;
   font-size: 80px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 .subheading {
-  text-align: center;
   font-size: 30px;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
+
+div.heading {
+  margin-top: 5px;
+  background-color: #6B9080;
+  display: flex;
+}
+
+div.heading img {
+  margin-left: 1%;
+  margin-right: 25px;
+  float: left;
+  border-radius: 15px;
+}
+
+.headingCol {
+  flex: 50%;
+}
+
+/* -------------- */
+
+.login-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 .Button {
   margin-top: 40px;
   margin-bottom: 40px;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
 
 /* CSS for individual posters */
 /* code for hover overlay adapted from https://www.w3schools.com/howto/howto_css_image_overlay.asp*/ 
@@ -108,7 +142,6 @@ html {
 
 .movieListTitle-container{
   display: flex;
-  text-align: center;
   padding: 10px;
 }
 
@@ -116,6 +149,7 @@ html {
   margin: auto;
   font-weight: bold;
   font-size: 30px;
+  text-align: center;
 }
 
 .movie-container{
@@ -130,3 +164,78 @@ html {
   border-radius: 15px;
 }
 
+/* CSS for UserPage */
+
+.UserPageFlex {
+  display: flex;
+}
+
+  /* CSS for the left content */
+
+.user {
+  /* border: solid green; */
+  flex: 30%;
+  padding: 10px;
+}
+
+  /* CSS for the right content */
+.UserContent {
+  /* border: solid black; */
+  flex: 80%;
+  padding: 10px;
+}
+
+  /* CSS for individual sections */
+
+.AboutMe {
+  /* border: solid purple; */
+  background-color: #A4C3B2;
+  border-radius: 25px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+/* CSS for ReviewList and Review */
+
+.ReviewList {
+  background-color: #CCE3DE;
+  margin: 40px auto 0 auto;
+  padding: 15px;
+  border-radius: 25px;
+  width: 80%;
+}
+
+.ReviewContainer {
+  background-color: #A4C3B2;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 25px;
+  margin: 25px;
+  transition: transform .2s; 
+}
+
+.ReviewContainer h2 {
+  font-size: 22px;
+}
+
+.ReviewContainer:hover {
+  transform: scale(1.01);
+}
+
+.Review {
+  margin-left: 40px;
+}
+
+.ReviewContent {
+  /* color: #F6FFF8; */
+  color: #262626;
+  font-style: italic;
+  margin-left: 40px;
+  font-size: 18px;
+}
+
+.stars {
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+}

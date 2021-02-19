@@ -1,20 +1,19 @@
-import React from "react"
-import "./button.css"
+import React from 'react'
 
+const LoginButton = styled.button`
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  cursor: pointer;
+`;
 
-var React = require('react');
-
-var buttonStyle = {
-  margin: '10px 10px 10px 0'
-};
-
-var Button = React.createClass({
-  render: function () {
-    return (
-      <button
-        className="btn btn-default"
-        style={buttonStyle}
-        onClick={this.props.handleClick}>{this.props.label}</button>
+function LoginButton(){
+    return(
+        <button>Login</button>
     );
-  }
-});
+}
+
+export default LoginButton
