@@ -4,6 +4,7 @@ import Loginpage from './components/Loginpage.jsx';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import UserPage from './components/UserPage.js';
+import MoviePage from './components/MoviePage';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -42,10 +43,12 @@ function App() {
         <p>{googleObj ? `Welcome ${googleObj.name}!` : `not logged in`}</p>
         
       </div>
+      {/* Most likely move the logo component outside so that it'll be easy to merge the google login button into a nav bar? */}
       <Logo />
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/Login" component={Loginpage}></Route>
+        <Route exact path="/Movie" component={MoviePage} />
+        <Route exact path="/Login" component={Loginpage} />
         <Route exact path="/User">
           {googleObj ? <UserPage googleObj = {googleObj} /> : <p>Please log in</p>}
         </Route>
