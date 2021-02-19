@@ -3,6 +3,8 @@ import AboutMe from './AboutMe.js'
 import ReviewList from './ReviewList'
 import UserPic from './UserPic.js'
 import { useState } from 'react'
+import MyMovieList from './MyMovieList'
+import Movie from './Movie.jsx'
 
 /*
 let favorite_Movies = {
@@ -51,20 +53,19 @@ const UserPage = (props) => {
         }
     ])
 
-const listName = "My Top-Rated Movies"
 
     return(
         <div class="UserPageFlex">
             <div className="user">
                 {/* <UserPic /> Disabled this component for now since it is broken*/}
                 {/* <img src ="https://i.ytimg.com/vi/4y_lc8m4vSc/hqdefault.jpg" /> */}
-                <img src ="https://i.stack.imgur.com/34AD2.jpg" />
-                <h3 style={{fontSize: "40px"}}>{props.name}</h3>
+                <img src = {props.googleObj.imageUrl} />
+                <h3 style={{fontSize: "40px"}}>{props.googleObj.name}</h3>
                 <AboutMe />
             </div>
             <div className="UserContent">
                 <div className="MyMovies">
-                    <MovieList list = {movies} name = {listName}/>
+                    <MyMovieList name = "MyMovies" googleObj = {props.googleObj}/>
                 </div>
                 <br/>
                 <div className="MyReviews">

@@ -4,6 +4,8 @@ import { GoogleLogin } from 'react-google-login';
 // refresh token
 import { refreshTokenSetup } from '../utils/refreshToken';
 
+import database from '../firebase';
+
 const clientId = process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID;
 
 function Login(props) {
@@ -15,7 +17,9 @@ function Login(props) {
     );
     refreshTokenSetup(res);
     props.setLoggedIn(true);
-    props.setName(res.profileObj.name)
+    props.setGoogleObj(res.profileObj);
+    props.setName(res.profileObj.name);
+    props.setURL(res.profileObj.imageUrl);
   };
 
   const onFailure = (res) => {
@@ -25,6 +29,22 @@ function Login(props) {
     );
   };
 
+  //TODO: check if user exist in the data base, if not, add user to the data base
+  //maybe we don't need this?
+  /*
+  const addUser = (res) => {
+    database.ref(`/users/${res.profileObj.googleId}/userInfo`).push(
+      {
+        email = res.profileObj.email,
+        familyName = res.profileObj.familyName,
+        givenName: res.profileObj.givenName,
+        googleId = res.profileObj.googleId,
+        imageUrl = res.profileObj.imageUrl,
+        name = res.profileObj.name,
+      }
+    )
+  }
+  */
   
   return (
 
