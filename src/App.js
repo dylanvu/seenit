@@ -5,6 +5,7 @@ import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import UserPage from './components/UserPage.js';
 import MoviePage from './components/MoviePage';
+import SearchPage from './components/SearchPage';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -40,7 +41,7 @@ function App() {
         <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>
         :
         <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
-        <p>{googleObj ? `Welcome ${googleObj.name}!` : `not logged in`}</p>
+        <p>{googleObj ? `Welcome ${googleObj.name}!` : `Not logged in. Please log in.`}</p>
         
       </div>
       {/* Most likely move the logo component outside so that it'll be easy to merge the google login button into a nav bar? */}
@@ -52,6 +53,7 @@ function App() {
         <Route exact path="/User">
           {googleObj ? <UserPage googleObj = {googleObj} /> : <p>Please log in</p>}
         </Route>
+        <Route exact path="/Search" component={SearchPage} />
       </Switch>
     </Router>
   );

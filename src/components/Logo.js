@@ -21,6 +21,11 @@ function Logo(){
                         <Link to = "/Movie">Go to Movie Page Test</Link>
                     </p>
                 </div>
+                <div className="headingCol">
+                    <p style={{textAlign: "right", marginRight: "10px", padding: "50px 0"}}>
+                        <Link to = "/Search">Go to Search Page Test</Link>
+                    </p>
+                </div>
             </div>
     )
 }
