@@ -40,12 +40,15 @@ function Movie(props) {
                     <div className="movieText">{props.title}</div>
                 </div>
             </a>
+            <div>
             {
                 props.id ? 
                 <button onClick={() => deleteFromDb()}>Delete from Favorite Movies</button>
                 :
                 <button onClick={() => saveToDb()}>Add to Favorite Movies</button>
             }
+            </div>
+
         </div>
     )
 }

@@ -12,9 +12,9 @@ function Login(props) {
 
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully! Welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
+    // alert(
+    //   `Logged in successfully! Welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    // );
     refreshTokenSetup(res);
     props.setLoggedIn(true);
     props.setGoogleObj(res.profileObj);
@@ -23,7 +23,7 @@ function Login(props) {
   };
 
   const onFailure = (res) => {
-    console.log('Login fa iled: res:', res);
+    console.log('Login failed: res:', res);
     alert(
       `Failed to login 😢. Please try again`
     );
@@ -62,3 +62,18 @@ function Login(props) {
 }
 
 export default Login;
+
+// Possible methods from login: (from react-google-login, the use-google-login.js)
+
+// res.googleId = basicProfile.getId()
+// res.tokenObj = authResponse
+// res.tokenId = authResponse.id_token
+// res.accessToken = authResponse.access_token
+// res.profileObj = {
+//   googleId: basicProfile.getId(),
+//   imageUrl: basicProfile.getImageUrl(),
+//   email: basicProfile.getEmail(),
+//   name: basicProfile.getName(),
+//   givenName: basicProfile.getGivenName(),
+//   familyName: basicProfile.getFamilyName()
+// }
