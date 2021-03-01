@@ -38,7 +38,7 @@ const MoviePage = (props) => {
         setReview(val.target.value)
     }
 
-    //save new review to the data base
+    //save new review to the data base 
     function saveReview(){
         if (props.googleObj != null){
             database.ref(`/users/${props.googleObj.googleId}/movieReviews`).push(
