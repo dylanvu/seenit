@@ -26,6 +26,7 @@ let reviews = [{
 const ReviewList = (props) => {
     const [reviewList, setReviewList] = useState([])
 
+    //get all reviews for the user
     useEffect(() => 
         database.ref(`users/${props.googleObj.googleId}/movieReviews`).on("value", (snapshot) =>{
             let myReviews = []
