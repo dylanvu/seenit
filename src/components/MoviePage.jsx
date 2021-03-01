@@ -1,7 +1,8 @@
 import React from 'react'
 import {useState} from 'react'
 import database from '../firebase'
-
+import {useEffect} from 'react'
+import Review from "./Review.jsx"
 // Props should likely have properties:
 // URL (for image poster)
 // Name (For movie title)
@@ -10,16 +11,45 @@ import database from '../firebase'
 const MoviePage = (props) => {
 
     const[review, setReview] = useState("")
+    const[allReview, setAllReview] = useState([])
 
+    //get all reviews for this movie
+    useEffect(() => 
+        database.ref(`movieReviews/lalaland`).on("value", (snapshot) =>{
+            let reviews = []
+            if (snapshot != null){
+                snapshot.forEach(data => {
+                    let review = {
+                        id: data.key,
+                        user: data.val().user.givenName + ' ' + data.val().user.familyName ,
+                        movieTitle: "La la land",
+                        reviewContent: data.val().review,
+                        stars: 5
+                    }
+                    reviews.push(review)
+                })
+            }
+            setAllReview(allReview.concat(reviews))
+        })
+    ,[]) 
+
+    //get text from the text box
     function getData(val){
         setReview(val.target.value)
     }
 
+    //save new review to the data base
     function saveReview(){
         if (props.googleObj != null){
             database.ref(`/users/${props.googleObj.googleId}/movieReviews`).push(
                 {
                     movie: "La la Land",
+                    review: review
+                }
+            )
+            database.ref(`/movieReviews/lalaland`).push(
+                {
+                    user: props.googleObj,
                     review: review
                 }
             )
@@ -51,9 +81,15 @@ const MoviePage = (props) => {
                 </h2>
                 <div>
                     <h1>Write a review</h1>
-                    <input type="text" onChange={getData} value={review}/>
+                    <input className="textarea" type="text" onChange={getData} value={review}/>
                     <button onClick={saveReview}> Save Review </button>
-                </div>
+                    <h1>All reviews</h1>
+                    {allReview.map ((review) => (
+                        <Review user = {review.user}
+                        reviewContent = {review.reviewContent}
+                        stars = {review.stars}/>
+                    ))}
+                </div> 
             </div>
         </div>
     )
