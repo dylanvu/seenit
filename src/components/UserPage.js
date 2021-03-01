@@ -3,38 +3,34 @@ import AboutMe from './AboutMe.js'
 import ReviewList from './ReviewList'
 import UserPic from './UserPic.js'
 import { useState } from 'react'
-import MyMovieList from './MyMovieList'
 import Movie from './Movie.jsx'
+import {useEffect} from 'react'
+import database from '../firebase'
 
-/*
-let favorite_Movies = {
-    listName: "Favorite Movies",
-    moviesList: {
-        url: "",
-        title: ""
-    }
-}
-*/
-
-/*
-const favorite_Movies = () => {
-    const[movies, setMovies] = useState([
-        {
-            id: 1,
-            movie: "La La Land",
-            url: "https://upload.wikimedia.org/wikipedia/en/a/ab/La_La_Land_%28film%29.png",
-        },
-        {
-            id: 2,
-            movie: "Your Name",
-            url: "https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png"
-        }
-    ])
-}
-*/
 
 const UserPage = (props) => {
 
+    //create list of movie from user's data base
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => 
+        database.ref(`users/${props.googleObj.googleId}/movies`).on("value", (snapshot) =>{
+            let myMovies = []
+            if (snapshot != null){
+                snapshot.forEach(data => {
+                    let movie = {
+                        id: data.key,
+                        title: data.val().title,
+                        url: data.val().img
+                    }
+                    myMovies.push(movie)
+                })
+            }
+            setMovies(movies.concat(myMovies))
+        })
+    ,[])
+
+    /*
     const[movies, setMovies] = useState([
         {
             id: 1,
@@ -51,7 +47,7 @@ const UserPage = (props) => {
             movie: "Interstellar",
             url: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
         }
-    ])
+    ]) */
 
 
     return(
@@ -65,14 +61,14 @@ const UserPage = (props) => {
             </div>
             <div className="UserContent">
                 <div className="MyMovies">
-                    <MyMovieList name = "MyMovies" googleObj = {props.googleObj}/>
+                    <MovieList listName = "My Favorite Movies" googleObj = {props.googleObj} movieList = {movies}/>
                 </div>
                 <br/>
                 <div className="MyReviews">
-                    <ReviewList />
+                    <ReviewList googleObj = {props.googleObj} />
                 </div>
             </div>
-        </div>
+        </div> 
     )
 }
 

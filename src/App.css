@@ -108,6 +108,7 @@ div.heading img {
   height: 296px;
 }
 
+
 .movie:hover .overlay {
   opacity: 0.9;
   border-radius: 15px;
