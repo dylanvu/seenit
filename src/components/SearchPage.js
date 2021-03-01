@@ -15,7 +15,7 @@ const SearchPage = () => {
     const getData = async () => {
         if (query !== "") {
             const result = await Axios.get(url); // fetches the data
-            if (result.data.results == []) {
+            if (result.data.results == []) { // alert if results array is empty
                 return setAlert("No movie with such name");
             }
             console.log(result);
@@ -40,7 +40,7 @@ const SearchPage = () => {
             <h1>Search for Movies</h1>
             <form onSubmit={onSubmit} className="search-form">
                 {alert !== "" && <Alert alert={alert} />}
-                {/* the search bar */}
+                {/* search bar */}
                 <input
                     type="text"
                     name="query"
@@ -49,10 +49,10 @@ const SearchPage = () => {
                     autoComplete="off"
                     placeholder="Search Movies"
                 />
-                {/* the submit button */}
+                {/* submit button */}
                 <input type="submit" value="Search" />
             </form>
-            {/* the list of movies displayed */}
+            {/* list of movies displayed */}
             <div className="search-results-container">
                 {movies != [] && // check if movies isn't empty
                     movies.map(movie => <SearchMovie key={movie.id} {...movie} />)}
