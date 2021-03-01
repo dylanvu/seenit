@@ -6,26 +6,26 @@ import { useState } from 'react'
 
 import {Link} from "react-router-dom";
 
-const Homepage = () => {
+const Homepage = (props) => {
 
-
+    
     const[movies, setMovies] = useState([
         {
-            id: 1,
-            movie: "La La Land",
+            key: 1,
+            title: "La La Land",
             url: "https://upload.wikimedia.org/wikipedia/en/a/ab/La_La_Land_%28film%29.png",
         },
         {
-            id: 2,
-            movie: "Your Name",
+            key: 2,
+            title: "Your Name",
             url: "https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png"
         },
         {
-            id: 3,
-            movie: "Interstellar",
+            key: 3,
+            title: "Interstellar",
             url: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
         }
-    ])
+    ]) 
 
     const listName = "Top User-Rated Movies"
 
@@ -39,7 +39,7 @@ const Homepage = () => {
         {/* <Button className="Button">
             <Link to="/Login">Log in here</Link>
         </Button> */}
-        <MovieList list = {movies} name = {listName} />
+        <MovieList movieList={movies} listName={listName} googleObj = {props.googleObj} />
     </div>
     )
 }
