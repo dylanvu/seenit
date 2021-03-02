@@ -63,7 +63,7 @@ const SearchPage = (props) => {
     };
 
     return (
-        <div className="Search Page">
+        <div className="SearchPage">
             <h1>Search for Movies</h1>
             <form onSubmit={onSubmit} className="search-form">
                 {alert !== "" && <Alert alert={alert} />}

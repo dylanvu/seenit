@@ -257,7 +257,7 @@ div .navbar img {
 .user {
   /* border: solid green; */
   flex: 20%;
-  padding: 10px;
+  margin: 20px;
 }
 
 .GooglePic {
@@ -266,6 +266,7 @@ div .navbar img {
   margin-right: auto;
   margin-top: 40px;
   width: 180px;
+  border-radius: 15px
 }
 
   /* CSS for the right content */
@@ -337,6 +338,8 @@ div .navbar img {
 
 .MoviePageFlex {
   display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
   /* CSS for the left content */
@@ -441,4 +444,10 @@ div .navbar img {
 .AddReviewButton:hover {
   cursor: pointer;
   background-color: #6B9080;
+}
+
+/* CSS for the SearchPage */
+
+.SearchPage {
+  margin-left: 20px;
 }
