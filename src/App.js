@@ -51,11 +51,11 @@ function App() {
           <Homepage googleObj = {googleObj} />
         </Route>
         <Route exact path="/Movie">
-          {googleObj ? <MoviePage googleObj = {googleObj} /> : <p>Please log in</p>}
+          {googleObj ? <MoviePage googleObj = {googleObj} /> : <p></p>}
         </Route>
         <Route exact path="/Login" component={Loginpage} />
         <Route exact path="/User">
-          {googleObj ? <UserPage googleObj = {googleObj} /> : <p>Please log in</p>}
+          {googleObj ? <UserPage googleObj = {googleObj} /> : <p></p>}
         </Route>
         <Route exact path="/Search" component={SearchPage} />
       </Switch>

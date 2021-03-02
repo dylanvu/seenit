@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom'
 function Logo(props){
     return (
             <div className="heading">
-                <div className="headingCol">
+                <div className="headingColimg">
                     <Link to ="/" className="link"><img className="Logo" src={logo} height="140"/></Link>
+                </div>
+                <div className="headingCol">
                     <h1 className="title">SeenIt</h1>
                     <p className="subheading">The Social Movie Network in React</p>
                 </div>
