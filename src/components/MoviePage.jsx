@@ -80,10 +80,19 @@ const MoviePage = (props) => {
                     <span>Ryan Gosling</span>
                 </h2>
                 <div>
-                    <h1>Write a review</h1>
-                    <input className="textarea" type="text" onChange={getData} value={review}/>
-                    <button onClick={saveReview}> Save Review </button>
-                    <h1>All reviews</h1>
+                    <div>
+                        <h1>Write a review</h1>
+                    </div>
+                    <div className="WriteReviewContainer">
+                        <div className="WriteReview">
+                            <textarea className="textarea" name="text" wrap="soft" onChange={getData} value={review}/>
+                            <button className="AddReviewButton" onClick={saveReview}> Save Review </button>
+                        </div>
+                    </div>
+                    <br/>
+                    <div>
+                        <h1>All reviews</h1>
+                    </div>
                     {allReview.map ((review) => (
                         <Review user = {review.user}
                         reviewContent = {review.reviewContent}
