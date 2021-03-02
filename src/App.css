@@ -37,6 +37,7 @@ html {
 }
 
 /* CSS for the logo/header */
+
 .title {
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -62,12 +63,43 @@ div.heading {
 div.heading img {
   margin-left: 1%;
   margin-right: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   float: left;
   border-radius: 15px;
 }
 
 .headingCol {
   flex: auto;
+  border-top: solid 5px #A4C3B2;
+  border-bottom: solid 5px #A4C3B2;
+  border-right: solid 2.5px #A4C3B2;
+  border-left: solid 2.5px #A4C3B2;
+  border-radius: 1px;
+  transition: background-color 0.3s;
+}
+
+.headingCol:hover {
+  background-color: #A4C3B2;
+}
+
+.headingText {
+  text-align: center;
+  margin-right: 30px;
+  padding: 50px 0;
+  font-size: 22px;
+  transition: color 0.3s;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  transition: color 0.5s;
+  font-weight: bold;
+}
+
+.headingText .link:hover {
+  color: #6B9080;
 }
 
 /* -------------- */
@@ -131,7 +163,7 @@ div.heading img {
 
 /* CSS for MovieList */
 
-.movieList-container{
+.movieList-container {
   width: 80%;
   border: #6B9080;
   /* Old: border: 2px solid #4d648d; */
@@ -142,28 +174,45 @@ div.heading img {
   padding: 15px;
 }
 
-.movieListTitle-container{
+.movieListTitle-container {
   display: flex;
   padding: 10px;
 }
 
-.movieListTitle{
+.movieListTitle {
   margin: auto;
   font-weight: bold;
   font-size: 30px;
   text-align: center;
 }
 
-.movie-container{
+.movie-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;  /*boxes move around according to screen size*/
 }
 
-.moviePoster{
+.moviePoster {
   width: 200px;
   height: 296px;
   border-radius: 15px;
+}
+
+.databaseButton {
+  width: 200px;
+  text-align: center;
+  background-color: #6B9080;
+  border: solid 3px #6B9080;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 10px;
+  transition: background-color 0.5s;
+}
+
+.databaseButton:hover {
+  cursor: pointer;
+  background-color: #EAF4F4;
 }
 
 /* CSS for UserPage */
@@ -178,6 +227,14 @@ div.heading img {
   /* border: solid green; */
   flex: 20%;
   padding: 10px;
+}
+
+.GooglePic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  width: 180px;
 }
 
   /* CSS for the right content */
@@ -312,18 +369,21 @@ div.heading img {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 18px;
-  height: 100px;
+  height: 25px;
   width: 95%;
-  border: 1px solid #A4C3B2;
+  border: 5px solid #f8f8f8;
   border-radius: 25px;
   background-color: #f8f8f8;
   resize: none;
   padding: 25px;
   overflow: auto;
+  transition: border-color 0.3s, height 0.5s ease-in-out;
 }
 
 .textarea:focus, input:focus{
   outline: none;
+  border-color: #6B9080;
+  height: 200px;
 }
 
 .WriteReviewContainer {
@@ -343,4 +403,11 @@ div.heading img {
   float: right;
   background-color: #f8f8f8;
   font-size: 18px;
+  transition: background-color 0.5s;
+  border-radius: 5px;
+}
+
+.AddReviewButton:hover {
+  cursor: pointer;
+  background-color: #6B9080;
 }

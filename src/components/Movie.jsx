@@ -88,9 +88,9 @@ function Movie(props) {
             <div>
             {
             exist ? 
-                <button onClick={() => deleteFromDb(props.title)}>Delete from Favorite Movies</button>
+                <button className="databaseButton" onClick={() => deleteFromDb(props.title)}>Delete from Favorite Movies</button>
                 :
-                <button onClick={() => saveToDb()}> Add to Favorite Movies</button>
+                <button className="databaseButton" onClick={() => saveToDb()}> Add to Favorite Movies</button>
             }
             </div>
 

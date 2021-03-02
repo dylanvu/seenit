@@ -3,28 +3,34 @@ import { Link } from 'react-router-dom'
 
 // Logo size is 174 px x 166 px
 
-function Logo(){
-    return(
+function Logo(props){
+    return (
             <div className="heading">
                 <div className="headingCol">
-                    <Link to ="/"><img src = {logo} height="140"/></Link>
+                    <Link to ="/" className="link"><img className="Logo" src={logo} height="140"/></Link>
                     <h1 className="title">SeenIt</h1>
                     <p className="subheading">The Social Movie Network in React</p>
                 </div>
                 <div className="headingCol">
-                    <p style={{textAlign: "right", marginRight: "10px", padding: "50px 0"}}>
-                        <Link to = "/User">Go to User Page Test</Link>
+                    <p className="headingText">
+                        <Link to = "/Movie" className="link">Go to Movie Page Test</Link>
                     </p>
                 </div>
                 <div className="headingCol">
-                    <p style={{textAlign: "right", marginRight: "10px", padding: "50px 0"}}>
-                        <Link to = "/Movie">Go to Movie Page Test</Link>
+                    <p className="headingText">
+                        <Link to = "/Search" className="link">Search for a movie</Link>
                     </p>
                 </div>
                 <div className="headingCol">
-                    <p style={{textAlign: "right", marginRight: "10px", padding: "50px 0"}}>
-                        <Link to = "/Search">Go to Search Page Test</Link>
+                    {props.status ? 
+                    <p className="headingText">
+                        <Link to = "/User" className="link">View Profile</Link>
                     </p>
+                    : 
+                    <p className="headingText">
+                        Log in to view profile
+                    </p>
+                    }
                 </div>
             </div>
     )

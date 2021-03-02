@@ -41,11 +41,11 @@ function App() {
         <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>
         :
         <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
-        <p>{googleObj ? `Welcome ${googleObj.name}!` : `Not logged in. Please log in.`}</p>
+        <p>&nbsp; {googleObj ? `Welcome ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
         
       </div>
       {/* Most likely move the logo component outside so that it'll be easy to merge the google login button into a nav bar? */}
-      <Logo />
+      <Logo status={loggedIn}/>
       <Switch>
         <Route exact path="/">
           <Homepage googleObj = {googleObj} />
