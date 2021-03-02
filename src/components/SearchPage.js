@@ -3,8 +3,9 @@ import Axios from 'axios'
 import { v4 as uuid4 } from 'uuid'
 import SearchMovie from './SearchMovie'
 import Alert from './Alert'
+import MovieList from './MovieList'
 
-const SearchPage = () => {
+const SearchPage = (props) => {
     let [query, setQuery] = useState('');
     // let [movies, setMovies] = useState([{
     //     id: 0,
@@ -16,9 +17,10 @@ const SearchPage = () => {
     let [movies, setMovies] = useState([]);
     let [alert, setAlert] = useState('');
     let [searchStatus, setSearchstatus] = useState(false)
-    
+    let listName = "Search Results"
     const API_KEY = "78fcb8fa5df23ceee859f6258985efc4";
     const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=' + API_KEY + '&query=' + query; // version 3
+    console.log(SEARCH_API)
 
     const getData = async () => {
         if (query !== "") {
@@ -79,6 +81,7 @@ const SearchPage = () => {
             </form>
             {/* list of movies displayed */}
             <div className="search-results-container">
+                {/* {searchStatus ? <MovieList movieList={movies} listName={listName} googleObj = {props.googleObj}/> : <p>Please search for a movie above!</p>} */}
                 {searchStatus ? movies.map(movie => <SearchMovie title={movie.title} poster_path={movie.poster_path} overview={movie.overview} vote_average={movie.vote_average}/>) : <p>Please search for a movie above!</p>}
             </div>
         </div>
@@ -86,3 +89,5 @@ const SearchPage = () => {
 }
 
 export default SearchPage;
+
+// Poster path looks like: https://image.tmdb.org/t/p/w500 + poster_path. For example: https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg
