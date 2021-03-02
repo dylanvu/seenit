@@ -108,6 +108,7 @@ div.heading img {
   height: 296px;
 }
 
+
 .movie:hover .overlay {
   opacity: 0.9;
   border-radius: 15px;
@@ -290,4 +291,14 @@ div.heading img {
 
 .MovieContent h2 span {
   font-size: 20px;
+}
+
+ /* CSS for review textbox */
+.textarea {
+  width: 80%;
+  height: 100px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
 }
