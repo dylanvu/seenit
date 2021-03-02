@@ -5,7 +5,7 @@ import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import UserPage from './components/UserPage.js';
 import MoviePage from './components/MoviePage';
-import SearchPage from './components/SearchPage';
+import SearchPage from './components/SearchPage.js';
 import { useState } from 'react';
 import {
   BrowserRouter as Router,

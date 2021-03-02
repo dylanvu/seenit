@@ -5,22 +5,38 @@ import SearchMovie from './SearchMovie'
 import Alert from './Alert'
 
 const SearchPage = () => {
-    const [query, setQuery] = useState('');
-    const [movies, setMovies] = useState([]);
-    const [alert, setAlert] = useState('');
+    let [query, setQuery] = useState('');
+    // let [movies, setMovies] = useState([{
+    //     id: 0,
+    //     title: "Interstellar",
+    //     poster_path: "/xJHokMbljvjADYdit5fK5VQsXEG.jpg",
+    //     overview: "Good movie",
+    //     vote_average: 8.3
+    // }]);
+    let [movies, setMovies] = useState([]);
+    let [alert, setAlert] = useState('');
+    let [searchStatus, setSearchstatus] = useState(false)
     
     const API_KEY = "78fcb8fa5df23ceee859f6258985efc4";
     const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=' + API_KEY + '&query=' + query; // version 3
 
     const getData = async () => {
         if (query !== "") {
+            console.log("The query submitted is: "+ query)
             const result = await Axios.get(SEARCH_API); // fetches the data
-            if (result.results == []) { // alert if results array is empty
-                return setAlert("No movie with such name");
+            if (result.data.results === []) { // alert if results array is empty
+                setAlert("No movie with such name");
+                console.log("No movie found");
+                return null;
             }
-            console.log(result.data.results);
-            console.log(result.data.results[0])
+            //console.log(result.data)
+            console.log(result.data.results); //should match line 31
+            console.log(result.data.results[0]);
+            //let search_result = result.data.results
+            //setMovies(search_result); // get the movies data using results array
             setMovies(result.data.results); // get the movies data using results array
+            setSearchstatus(true)
+            console.log(movies)
             setQuery("");
             setAlert("");
         } else {
@@ -30,11 +46,18 @@ const SearchPage = () => {
     };
 
     // Set the query so that if updates with each search
-    const onChange = e => setQuery(e.target.value);
+    const onChange = e => {
+        //console.log(e.target.value)
+        setQuery(e.target.value);
+        //console.log(query);
+    }
 
     const onSubmit = e => {
         e.preventDefault();
-        getData();
+        if (query) {
+            getData();
+            setQuery('')
+        }
     };
 
     return (
@@ -56,8 +79,7 @@ const SearchPage = () => {
             </form>
             {/* list of movies displayed */}
             <div className="search-results-container">
-                {movies !== [] &&  // check if movies isn't empty, map to get movie, create a SearchMovie for each movie
-                    movies.map((movie) => <SearchMovie key={movie.id} {...movie} />)} 
+                {searchStatus ? movies.map(movie => <SearchMovie title={movie.title} poster_path={movie.poster_path} overview={movie.overview} vote_average={movie.vote_average}/>) : <p>Please search for a movie above!</p>}
             </div>
         </div>
     );
