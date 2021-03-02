@@ -133,6 +133,11 @@ div .navbar img {
 .login-buttons{
   display: flex;
   justify-content: flex-end;
+  margin: auto;
+}
+
+.login-buttons p {
+  font-weight: bold;
 }
 
 
