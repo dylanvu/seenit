@@ -86,6 +86,7 @@ const MoviePage = (props) => {
                     <div className="WriteReviewContainer">
                         <div className="WriteReview">
                             <textarea className="textarea" name="text" wrap="soft" onChange={getData} value={review}/>
+                            <br/>
                             <button className="AddReviewButton" onClick={saveReview}> Save Review </button>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ function Logo(props){
     return (
             <div className="heading">
                 <div className="headingColimg">
-                    <Link to ="/" className="link"><img className="Logo" src={logo} height="140"/></Link>
+                    <Link to ="/" className="link"><img className="Logo" src={logo} height="120"/></Link>
                 </div>
                 <div className="headingCol">
                     <h1 className="title">SeenIt</h1>

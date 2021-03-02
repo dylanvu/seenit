@@ -36,15 +36,15 @@ html {
   background: #536e62; 
 }
 
-/* CSS for the logo/header */
+/* CSS for the logo/navbar */
 
 .title {
   padding-bottom: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  font-size: 80px;
+  margin: 0px;
+  font-size: 60px;
   font-weight: bold;
-  margin-top: 20px;
+  width: 400px;
+  margin-block-end: 0px;
 }
 
 .subheading {
@@ -53,24 +53,29 @@ html {
   margin-top: 0px;
 }
 
-div.heading {
+div .navbar {
   margin-top: 5px;
   background-color: #6B9080;
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  /* flex-wrap: nowrap;
+  align-items: center; */
+  grid-template-columns: 150px auto auto auto auto;
+  grid-template-rows: auto;
 }
 
-div.heading img {
-  margin-left: 1%;
-  margin-right: 25px;
+div .navbar img {
+  /* margin-left: 1%;
+  margin-right: 25px; */
+  margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
   float: left;
   border-radius: 15px;
 }
 
+/* Each item of the navbar */
 .headingCol {
-  flex: auto;
+  /* flex: auto; */
   border-top: solid 5px #A4C3B2;
   border-bottom: solid 5px #A4C3B2;
   border-right: solid 2.5px #A4C3B2;
@@ -78,6 +83,10 @@ div.heading img {
   border-radius: 1px;
   transition: background-color 0.3s;
   padding: 10px;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
 }
 
 .headingCol:hover {
@@ -85,7 +94,7 @@ div.heading img {
 }
 
 .headingColimg {
-  flex: 0 0 150px;
+  /* flex: 0 0 150px; */
   border-top: solid 5px #A4C3B2;
   border-bottom: solid 5px #A4C3B2;
   border-right: solid 2.5px #A4C3B2;
@@ -101,11 +110,10 @@ div.heading img {
 
 .headingText {
   text-align: center;
-  margin-right: 30px;
-  padding: 50px 0;
   font-size: 22px;
   font-weight: bold;
   transition: color 0.3s;
+  align-self: center;
 }
 
 .link {
@@ -384,12 +392,12 @@ div.heading img {
   width: 95%;
 }
 .textarea {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-size: 18px;
   height: 25px;
   width: 95%;
-  border: 5px solid #f8f8f8;
+  border: 5px solid #6B9080;
   border-radius: 25px;
   background-color: #f8f8f8;
   resize: none;
@@ -400,12 +408,12 @@ div.heading img {
 
 .textarea:focus, input:focus{
   outline: none;
-  border-color: #6B9080;
+  border-color: #A4C3B2;
   height: 200px;
 }
 
 .WriteReviewContainer {
-  background-color: #A4C3B2;
+  /* background-color: #A4C3B2; */
   padding-top: 1px;
   padding-bottom: 1px;
   border-radius: 25px;
