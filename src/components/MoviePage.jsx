@@ -90,37 +90,40 @@ const MoviePage = (props) => {
     }
 
     return (
-        <div className="MoviePageFlex">
-            <div className="MovieImage">
-                <img src={img_path} alt={"Movie Poster of " + movie.title} className="MoviePagePoster" />
-            </div>
-            <div className="MovieContent">
-                <h1 className="MovieTitle">{movie.title}</h1>
-                <p className="overview">
-                    {movie.overview}
-                </p>
-                <br/>
-                <div>
-                    <div>
-                        {(allReview.length === 0) ? <h1>Write the First Review</h1> : <h1>Write a Review</h1>}
-                    </div>
-                    <div className="WriteReviewContainer">
-                        <div className="WriteReview">
-                            <textarea className="textarea" name="text" wrap="soft" onChange={getData} value={review}/>
-                            <br/>
-                            <button className="AddReviewButton" onClick={saveReview}> Save Review </button>
-                        </div>
-                    </div>
+        <div>
+            <br/>
+            <div className="MoviePageFlex">
+                <div className="MovieImage">
+                    <img src={img_path} alt={"Movie Poster of " + movie.title} className="MoviePagePoster" />
+                </div>
+                <div className="MovieContent">
+                    <h1 className="MovieTitle">{movie.title}</h1>
+                    <p className="overview">
+                        {movie.overview}
+                    </p>
                     <br/>
                     <div>
-                        {(allReview.length === 0) ? <h1>No Reviews Found</h1> : <h1>All Reviews</h1>}
-                    </div>
-                    {allReview.map ((review) => (
-                        <Review API_id = {movie.id} user = {review.user}
-                        reviewContent = {review.reviewContent}
-                        stars = {review.stars}/>
-                    ))}
-                </div> 
+                        <div>
+                            {(allReview.length === 0) ? <h1>Write the First Review</h1> : <h1>Write a Review</h1>}
+                        </div>
+                        <div className="WriteReviewContainer">
+                            <div className="WriteReview">
+                                <textarea className="textarea" name="text" wrap="soft" onChange={getData} value={review}/>
+                                <br/>
+                                <button className="AddReviewButton" onClick={saveReview}> Save Review </button>
+                            </div>
+                        </div>
+                        <br/>
+                        <div>
+                            {(allReview.length === 0) ? <h1>No Reviews Found</h1> : <h1>All Reviews</h1>}
+                        </div>
+                        {allReview.map ((review) => (
+                            <Review API_id = {movie.id} user = {review.user}
+                            reviewContent = {review.reviewContent}
+                            stars = {review.stars}/>
+                        ))}
+                    </div> 
+                </div>
             </div>
         </div>
     )
