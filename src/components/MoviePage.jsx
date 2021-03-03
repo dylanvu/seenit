@@ -1,8 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import database from '../firebase'
-import {useEffect} from 'react'
 import Review from "./Review.jsx"
 // Props should likely have properties:
 // URL (for image poster)
@@ -17,13 +16,9 @@ const MoviePage = (props) => {
     const[review, setReview] = useState("")
     const[allReview, setAllReview] = useState([])
     const [movie, setMovie] = useState([])
+    console.log("MoviePage props: " + props.API_id)
 
     const SEARCH_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + "?api_key=" + API_KEY;
-
-    async function getMoviebyID() {
-        let result = await Axios.get(SEARCH_API);
-        setMovie(result)
-    }
 
     //get all reviews for this movie
     useEffect(() => 
@@ -46,6 +41,11 @@ const MoviePage = (props) => {
     ,[]) 
 
     useEffect(() => {
+        async function getMoviebyID() {
+            let result = await Axios.get(SEARCH_API);
+            console.log(result);
+            setMovie(result.data)
+        }
         getMoviebyID(props.API_id)
     },[])
 

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Axios from 'axios'
-import { v4 as uuid4 } from 'uuid'
-import SearchMovie from './SearchMovie'
 import Alert from './Alert'
 import MovieList from './MovieList'
 
@@ -86,7 +84,7 @@ const SearchPage = (props) => {
             {/* list of movies displayed */}
             <div className="search-results-container">
                 {/* {searchStatus ? <MovieList movieList={movies} listName={listName} googleObj = {props.googleObj}/> : <p>Please search for a movie above!</p>} */}
-                {searchStatus ? <MovieList googleObj={props.googleObj} listName="Search Results" movieList={movies} /> : <p>Please search for a movie above!</p>}
+                {searchStatus ? <MovieList googleObj={props.googleObj} listName="Search Results" movieList={movies} setAPI_id = {props.setAPI_id}/> : <p>Please search for a movie above!</p>}
             </div>
         </div>
     );
