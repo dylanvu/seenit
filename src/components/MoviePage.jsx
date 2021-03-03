@@ -10,6 +10,7 @@ import Review from "./Review.jsx"
 // Summary? Director? Writer? Actors? Not sure how this will work. Likely depends on how the data we obtain is formatted
 
 const API_KEY = process.env.REACT_APP_THEMOVIESDB_API_KEY
+const IMG_API = 'https://image.tmdb.org/t/p/w1280';
 
 const MoviePage = (props) => {
 
@@ -78,7 +79,7 @@ const MoviePage = (props) => {
     return (
         <div className="MoviePageFlex">
             <div className="MovieImage">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/61pVLV%2Bz11L._AC_SL1162_.jpg" alt="Movie Poster" className="MoviePagePoster" />
+                <img src={IMG_API + movie.poster_path} alt={"Movie Poster of " + movie.title} className="MoviePagePoster" />
             </div>
             <div className="MovieContent">
                 <h1>{movie.title}</h1>
