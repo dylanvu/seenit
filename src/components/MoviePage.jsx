@@ -1,4 +1,5 @@
 import React from 'react'
+import Axios from 'axios'
 import {useState} from 'react'
 import database from '../firebase'
 import {useEffect} from 'react'
@@ -8,10 +9,20 @@ import Review from "./Review.jsx"
 // Name (For movie title)
 // Summary? Director? Writer? Actors? Not sure how this will work. Likely depends on how the data we obtain is formatted
 
+const API_KEY = process.env.REACT_APP_THEMOVIESDB_API_KEY
+
 const MoviePage = (props) => {
 
     const[review, setReview] = useState("")
     const[allReview, setAllReview] = useState([])
+    const [movie, setMovie] = useState([])
+
+    const SEARCH_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + "?api_key=" + API_KEY;
+
+    async function getMoviebyID() {
+        let result = await Axios.get(SEARCH_API);
+        setMovie(result)
+    }
 
     //get all reviews for this movie
     useEffect(() => 
@@ -32,6 +43,10 @@ const MoviePage = (props) => {
             setAllReview(allReview.concat(reviews))
         })
     ,[]) 
+
+    useEffect(() => {
+        getMoviebyID(props.API_id)
+    },[])
 
     //get text from the text box
     function getData(val){
@@ -66,9 +81,9 @@ const MoviePage = (props) => {
                 <img src="https://images-na.ssl-images-amazon.com/images/I/61pVLV%2Bz11L._AC_SL1162_.jpg" alt="Movie Poster" className="MoviePagePoster" />
             </div>
             <div className="MovieContent">
-                <h1>La La Land</h1>
+                <h1>{movie.title}</h1>
                 <p>
-                    While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.
+                    {movie.overview}
                 </p>
                 <h2>Director:&nbsp;
                     <span>Joe Director</span>
