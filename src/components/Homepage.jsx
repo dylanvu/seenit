@@ -51,6 +51,7 @@ const Homepage = (props) => {
         <MovieList movieList={topDaily} listName={dailylistName} googleObj = {props.googleObj} setAPI_id = {props.setAPI_id}/>
         <br/>
         <MovieList movieList={topWeekly} listName={weeklylistName} googleObj = {props.googleObj} setAPI_id = {props.setAPI_id}/>
+        <br/>
     </div>
     )
 }
