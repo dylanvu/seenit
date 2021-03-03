@@ -42,22 +42,10 @@ function App() {
                 </div>
                 <div className="headingCol">
                     <p className="headingText">
-                        {/* <Link to = "/Movie" className="link">Go to Movie Page Test</Link> */}
-                    </p>
-                </div>
-                <div className="headingCol">
-                    <p className="headingText">
                         <Link to = "/Search" className="link">Search for a movie</Link>
                     </p>
                 </div>
                 <div className="headingCol">
-                  <div className = "login-buttons">
-                    {loggedIn ? 
-                    <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>
-                    :
-                    <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
-                    <p>&nbsp; {googleObj ? `Welcome ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
-                  </div>
                     {loggedIn ? 
                     <p className="headingText">
                         <Link to = "/User" className="link">View Profile</Link>
@@ -67,6 +55,15 @@ function App() {
                         Log in to view profile
                     </p>
                     }
+                </div>
+                <div className="headingCol">
+                  <div div className = "login-buttons">
+                    {loggedIn ? 
+                    <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>
+                    :
+                    <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
+                    <p className="headingText">&nbsp; {googleObj ? `Welcome ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
+                  </div>
                 </div>
             </div>
 
