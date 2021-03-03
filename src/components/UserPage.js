@@ -47,7 +47,7 @@ const UserPage = (props) => {
                 </div>
                 <br/>
                 <div className="MyReviews">
-                    <ReviewList googleObj = {props.googleObj} />
+                    <ReviewList googleObj={props.googleObj} />
                 </div>
             </div>
         </div> 

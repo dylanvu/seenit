@@ -42,14 +42,13 @@ function Movie(props) {
     }
 
     const deleteFromDb = (API_id) => {
-        if (!props.id){
-            database.ref().child(`users/${props.googleObj.googleId}/movies`).orderByChild('API_id').equalTo(API_id)
-            .limitToFirst(1).once('child_added', snap => {
-                if (API_id === snap.val().API_id ){
-                    database.ref(`/users/${props.googleObj.googleId}/movies/${snap.key}`).remove()
-                }
-            })
-        }
+        database.ref().child(`users/${props.googleObj.googleId}/movies`).orderByChild('API_id').equalTo(API_id)
+        .limitToFirst(1).once('child_added', snap => {
+            if (API_id === snap.val().API_id ){
+                database.ref(`/users/${props.googleObj.googleId}/movies/${snap.key}`).remove()
+            }
+        })
+
         setExistence(false);
     }
 

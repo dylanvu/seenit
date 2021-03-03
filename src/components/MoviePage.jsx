@@ -27,14 +27,14 @@ const MoviePage = (props) => {
 
     //get all reviews for this movie
     useEffect(() => 
-        database.ref(`movieReviews/lalaland`).on("value", (snapshot) =>{
+        database.ref(`movieReviews/${props.API_id}`).on("value", (snapshot) =>{
             let reviews = []
             if (snapshot != null){
                 snapshot.forEach(data => {
                     let review = {
+                        key: data.key,
                         API_id: data.val().API_id,
-                        user: data.val().user.givenName + ' ' + data.val().user.familyName ,
-                        movieTitle: "La la land",
+                        user: data.val().user.givenName + ' ' + data.val().user.familyName,
                         reviewContent: data.val().review,
                         stars: 5
                     }
@@ -57,7 +57,7 @@ const MoviePage = (props) => {
     //save new review to the data base 
     function saveReview(){
         if (props.googleObj != null){
-            database.ref(`/users/${props.googleObj.googleId}/movieReviews/${props.API_id}`).push(
+            database.ref(`/users/${props.googleObj.googleId}/movieReviews`).push(
                 {
                     API_id: props.API_id,
                     title: movie.title,
@@ -113,7 +113,7 @@ const MoviePage = (props) => {
                         <h1>All reviews</h1>
                     </div>
                     {allReview.map ((review) => (
-                        <Review user = {review.user}
+                        <Review API_id = {movie.id} user = {review.user}
                         reviewContent = {review.reviewContent}
                         stars = {review.stars}/>
                     ))}
