@@ -33,8 +33,9 @@ const ReviewList = (props) => {
             if (snapshot != null){
                 snapshot.forEach(data => {
                     let review = {
-                        id: data.key,
-                        movieTitle: data.val().movie,
+                        key: data.key,
+                        API_id: data.val().API_id,
+                        title: data.val().title,
                         reviewContent: data.val().review,
                         stars: 5
                     }
@@ -49,9 +50,9 @@ const ReviewList = (props) => {
         <div className="ReviewList">
             <div className = "movieListTitle">My Recent Reviews</div>
             {reviewList.map ((review) => (
-            <Review googleObj = {props.googleObj} id = {review.id} movieTitle = {review.movieTitle}
-            reviewContent = {review.reviewContent}
-            stars = {review.stars}/>
+            <Review googleObj={props.googleObj} key={review.key} API_id={review.API_id} movieTitle={review.title}
+            reviewContent={review.reviewContent}
+            stars={review.stars}/>
             ))}
         </div>
     )
