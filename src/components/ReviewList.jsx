@@ -49,7 +49,7 @@ const ReviewList = (props) => {
         <div className="ReviewList">
             <div className = "movieListTitle">My Recent Reviews</div>
             {reviewList.map ((review) => (
-            <Review movieTitle = {review.movieTitle}
+            <Review googleObj = {props.googleObj} id = {review.id} movieTitle = {review.movieTitle}
             reviewContent = {review.reviewContent}
             stars = {review.stars}/>
             ))}

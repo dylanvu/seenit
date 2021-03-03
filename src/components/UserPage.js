@@ -19,7 +19,7 @@ const UserPage = (props) => {
             if (snapshot != null){
                 snapshot.forEach(data => {
                     let movie = {
-                        id: data.key,
+                        key: data.key,
                         title: data.val().title,
                         url: data.val().img
                     }
@@ -29,25 +29,6 @@ const UserPage = (props) => {
             setMovies(movies.concat(myMovies))
         })
     ,[])
-
-    /*
-    const[movies, setMovies] = useState([
-        {
-            id: 1,
-            movie: "Arrival",
-            url: "https://m.media-amazon.com/images/M/MV5BMTExMzU0ODcxNDheQTJeQWpwZ15BbWU4MDE1OTI4MzAy._V1_.jpg",
-        },
-        {
-            id: 2,
-            movie: "The Martian",
-            url: "https://images-na.ssl-images-amazon.com/images/I/A1%2BFw58qbDL._AC_SL1500_.jpg"
-        },
-        {
-            id: 3,
-            movie: "Interstellar",
-            url: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
-        }
-    ]) */
 
 
     return(

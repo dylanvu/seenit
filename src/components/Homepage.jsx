@@ -11,17 +11,17 @@ const Homepage = (props) => {
     
     const[movies, setMovies] = useState([
         {
-            key: 1,
+            id: 1,
             title: "La La Land",
             url: "https://upload.wikimedia.org/wikipedia/en/a/ab/La_La_Land_%28film%29.png",
         },
         {
-            key: 2,
+            id: 2,
             title: "Your Name",
             url: "https://upload.wikimedia.org/wikipedia/en/0/0b/Your_Name_poster.png"
         },
         {
-            key: 3,
+            id: 3,
             title: "Interstellar",
             url: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
         }
