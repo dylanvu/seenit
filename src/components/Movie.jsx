@@ -17,10 +17,12 @@ function Movie(props) {
     useEffect(() => {
         check_exist(props.API_id);
         let img_src = IMG_API + props.url;
-        if (props.url === undefined) {
-            console.log("Poster was not found")
+        if (props.url == null) {
+            // console.log("Poster was not found")
             setimg_path(poster_not_found)
         } else {
+            // console.log(props.title)
+            // console.log(img_src)
             setimg_path(img_src)
         }
     }, []);

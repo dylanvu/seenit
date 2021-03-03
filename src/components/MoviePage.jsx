@@ -3,10 +3,8 @@ import Axios from 'axios'
 import { useState, useEffect } from 'react'
 import database from '../firebase'
 import Review from "./Review.jsx"
-// Props should likely have properties:
-// URL (for image poster)
-// Name (For movie title)
-// Summary? Director? Writer? Actors? Not sure how this will work. Likely depends on how the data we obtain is formatted
+import poster_not_found from './poster_not_found.png'
+
 
 const API_KEY = process.env.REACT_APP_THEMOVIESDB_API_KEY
 const IMG_API = 'https://image.tmdb.org/t/p/w1280';
@@ -16,7 +14,7 @@ const MoviePage = (props) => {
     const[review, setReview] = useState("")
     const[allReview, setAllReview] = useState([])
     const [movie, setMovie] = useState([])
-    console.log("MoviePage props: " + props.API_id)
+    const [img_path, setimg_path] = useState();
 
     const SEARCH_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + "?api_key=" + API_KEY;
 
@@ -43,10 +41,17 @@ const MoviePage = (props) => {
     useEffect(() => {
         async function getMoviebyID() {
             let result = await Axios.get(SEARCH_API);
-            console.log(result);
+            // console.log(result);
             setMovie(result.data)
         }
         getMoviebyID(props.API_id)
+
+        // Check to see if the poster exists, otherwise use a default placeholder image
+        if (movie.poster_path == null) {
+            setimg_path(poster_not_found)
+        } else {
+            setimg_path(IMG_API + movie.poster_path)
+        }
     },[])
 
     //get text from the text box
@@ -81,7 +86,7 @@ const MoviePage = (props) => {
     return (
         <div className="MoviePageFlex">
             <div className="MovieImage">
-                <img src={IMG_API + movie.poster_path} alt={"Movie Poster of " + movie.title} className="MoviePagePoster" />
+                <img src={img_path} alt={"Movie Poster of " + movie.title} className="MoviePagePoster" />
             </div>
             <div className="MovieContent">
                 <h1>{movie.title}</h1>

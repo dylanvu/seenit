@@ -71,7 +71,7 @@ function App() {
           <Homepage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)}/>
         </Route>
         <Route exact path="/Movie">
-          {googleObj ? <MoviePage googleObj = {googleObj} API_id = {API_id}/> : <p></p>}
+          <MoviePage googleObj = {googleObj} API_id = {API_id}/>
         </Route>
         <Route exact path="/User">
           {googleObj ? <UserPage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)} /> : <p></p>}
