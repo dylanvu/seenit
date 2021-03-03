@@ -18,9 +18,9 @@ const SearchPage = (props) => {
     let [alert, setAlert] = useState('');
     let [searchStatus, setSearchstatus] = useState(false)
     let listName = "Search Results"
-    const API_KEY = "78fcb8fa5df23ceee859f6258985efc4";
+    const API_KEY = process.env.REACT_APP_THEMOVIESDB_API_KEY;
     const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=' + API_KEY + '&query=' + query; // version 3
-    console.log(SEARCH_API)
+    //console.log(SEARCH_API)
 
     const getData = async () => {
         if (query !== "") {
