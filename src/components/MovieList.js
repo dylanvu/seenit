@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 import Movie from './Movie.jsx'
-import {Link} from "react"
+import { useRef } from "react"
 
 
 const MovieList = (props) => {
-    console.log(props.movieList[0])
+    //console.log(props.movieList[0])
+
     return (
         <div className = "movieList-container">
             <div className = "movieListTitle-container">

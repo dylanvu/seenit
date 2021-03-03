@@ -24,7 +24,7 @@ import './App.css';
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
-  const [googleObj, setGoogleObj] = useState()
+  const [googleObj, setGoogleObj] = useState();
 
   return (
     <Router>
@@ -39,7 +39,7 @@ function App() {
                 </div>
                 <div className="headingCol">
                     <p className="headingText">
-                        <Link to = "/Movie" className="link">Go to Movie Page Test</Link>
+                        {/* <Link to = "/Movie" className="link">Go to Movie Page Test</Link> */}
                     </p>
                 </div>
                 <div className="headingCol">
@@ -74,7 +74,6 @@ function App() {
         <Route exact path="/Movie">
           {googleObj ? <MoviePage googleObj = {googleObj} /> : <p></p>}
         </Route>
-        <Route exact path="/Login" component={Loginpage} />
         <Route exact path="/User">
           {googleObj ? <UserPage googleObj = {googleObj} /> : <p></p>}
         </Route>

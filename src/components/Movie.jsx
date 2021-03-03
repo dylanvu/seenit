@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Switch, Route } from "react-router-dom";
 // Note that we don't need to import App.css since this component is a child of App.js
 // Assuming movie poster size has the ratio of 4050 pixels wide by 6000 pixels high
-import database from '../firebase'
-import {useEffect} from 'react'
+import MoviePage from './MoviePage';
+import database from '../firebase';
+import {useEffect} from 'react';
 
 const IMG_API = 'https://image.tmdb.org/t/p/w1280';
 
@@ -81,13 +82,17 @@ function Movie(props) {
 
     return(
         <div className="movie">
-            <Link to='/Movie'>
                 <img src={IMG_API + props.url} alt={image_name} className="moviePoster"/>
-                <a>
+                <Link to={{
+                    pathname: '/Movie',
+                    state: {
+                        API_id: props.API_id
+                    }
+                }}>
                     <div className="overlay">
                         <div className="movieText">{props.title}</div>
                     </div>
-                </a>
+                </Link>
                 <div>
                 {
                 exist ? 
@@ -96,7 +101,11 @@ function Movie(props) {
                     <button className="databaseButton" onClick={() => saveToDb()}> Add to Favorite Movies</button>
                 }
                 </div>
-            </Link>
+            {/* <Switch>
+                <Route exact path="/Movie">
+                    <MoviePage googleObj = {props.googleObj} API_id = {props.API_id}/>
+                </Route>
+            </Switch> */}
         </div>
     )
 }

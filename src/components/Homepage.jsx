@@ -13,7 +13,8 @@ const SEARCH_API = 'https://api.themoviedb.org/3/trending/movie/day?api_key=' + 
 
 const Homepage = (props) => {
 
-    const[topDaily, setTopDaily] = useState([]);
+    const [topDaily, setTopDaily] = useState([]);
+
 
     useEffect(() => {
         getDailymovies()

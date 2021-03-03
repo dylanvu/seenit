@@ -33,7 +33,7 @@ const UserPage = (props) => {
 
     //console.log(movies)
     return(
-        <div class="UserPageFlex">
+        <div className="UserPageFlex">
             <div className="user">
                 {/* <UserPic /> Disabled this component for now since it is broken*/}
                 {/* <img src ="https://i.ytimg.com/vi/4y_lc8m4vSc/hqdefault.jpg" /> */}
