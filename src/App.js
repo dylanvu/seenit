@@ -33,40 +33,43 @@ function App() {
     <Router>
       {/* <Logo status={loggedIn}/> */}
       <div className="navbar">
-                <div className="headingColimg">
-                    <Link to ="/" className="link"><img className="Logo" src={logo} height="100"/></Link>
-                </div>
-                <div className="headingCol">
-                    <h1 className="title">SeenIt</h1>
-                    <p className="subheading">The Social Movie Network in React</p>
-                </div>
-                <div className="headingCol">
-                    <p className="headingText">
-                        <Link to = "/Search" className="link">Search for a movie</Link>
-                    </p>
-                </div>
-                <div className="headingCol">
-                    {loggedIn ? 
-                    <p className="headingText">
-                        <Link to = "/User" className="link">View Profile</Link>
-                    </p>
-                    : 
-                    <p className="headingText">
-                        Log in to view profile
-                    </p>
-                    }
-                </div>
-                <div className="headingCol">
-                  <div div className = "login-buttons">
-                    {loggedIn ? 
-                    <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>
-                    :
-                    <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
-                    <p className="headingText">&nbsp; {googleObj ? `Welcome ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
-                  </div>
-                </div>
+        <div className="headingColimg">
+          <Link to ="/" className="link"><img className="Logo" src={logo} height="100"/></Link>
+        </div>
+        <div className="headingCol">
+          <h1 className="title">SeenIt</h1>
+          <p className="subheading">The Social Movie Network in React</p>
+        </div>
+        <div className="headingCol">
+            <p className="headingText">
+              <Link to = "/Search" className="link">Search for a movie</Link>
+            </p>
+        </div>
+        <div className="headingCol">
+          {loggedIn ? 
+          <p className="headingText">
+            <Link to = "/User" className="link">View Profile</Link>
+          </p>
+          : 
+          <p className="headingText">
+              Log in to view profile
+          </p>
+          }
+        </div>
+        <div className="headingCol">
+          <div div className = "login-buttons">
+            <div>
+              {loggedIn ? 
+              <Logout loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>
+              :
+              <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
             </div>
-
+            <div>
+              <p className="headingText">&nbsp; {googleObj ? `Welcome ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <Switch>
         <Route exact path="/">
           <Homepage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)}/>

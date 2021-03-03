@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+// import { useEffect } from 'react'
 import Axios from 'axios'
 import Alert from './Alert'
 import MovieList from './MovieList'
@@ -15,7 +16,6 @@ const SearchPage = (props) => {
     let [movies, setMovies] = useState([]);
     let [alert, setAlert] = useState('');
     let [searchStatus, setSearchstatus] = useState(false)
-    let listName = "Search Results"
     const API_KEY = process.env.REACT_APP_THEMOVIESDB_API_KEY;
     const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=' + API_KEY + '&query=' + query; // version 3
     //console.log(SEARCH_API)
@@ -24,23 +24,25 @@ const SearchPage = (props) => {
         if (query !== "") {
             console.log("The query submitted is: "+ query)
             const result = await Axios.get(SEARCH_API); // fetches the data
+            console.log(result.data.results)
             if (result.data.results === []) { // alert if results array is empty
                 setAlert("No movie with such name");
                 console.log("No movie found");
                 return null;
             }
             //console.log(result.data)
-            console.log(result.data.results); //should match line 31
-            console.log(result.data.results[0]);
+            // console.log(result.data.results); //should match line 31
+            // console.log(result.data.results[0]);
             //let search_result = result.data.results
             //setMovies(search_result); // get the movies data using results array
             let top10 = [];
             for (var i = 0; i < 10; i++){
-                top10.push(result.data.results[i]);
+                if (result.data.results[i])
+                    top10.push(result.data.results[i]);
             }
             setMovies(top10); // get the movies data using results array
             setSearchstatus(true)
-            console.log(movies)
+            //console.log(movies)
             setQuery("");
             setAlert("");
         } else {
@@ -64,6 +66,10 @@ const SearchPage = (props) => {
         }
     };
 
+    // useEffect(() => {
+    //     console.log(movies)
+    // }, [movies])
+
     return (
         <div className="SearchPage">
             <h1>Search for Movies</h1>
@@ -77,13 +83,14 @@ const SearchPage = (props) => {
                     value={query}
                     autoComplete="off"
                     placeholder="Search Movies"
+                    className="textInput"
                 />
                 {/* submit button */}
-                <input type="submit" value="Search" />
+                &nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Search" className="searchButton"/>
             </form>
             {/* list of movies displayed */}
             <div className="search-results-container">
-                {/* {searchStatus ? <MovieList movieList={movies} listName={listName} googleObj = {props.googleObj}/> : <p>Please search for a movie above!</p>} */}
                 {searchStatus ? <MovieList googleObj={props.googleObj} listName="Search Results" movieList={movies} setAPI_id = {props.setAPI_id}/> : <p>Please search for a movie above!</p>}
             </div>
         </div>

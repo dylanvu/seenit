@@ -20,25 +20,20 @@ const Homepage = (props) => {
         let result = await Axios.get(SEARCH_API);
         let temp = []
         // Get only the top 10 movie
-        for (var i = 0; i < 10; i++) {
-            temp.push(result.data.results[i])
+        for (var i = 0; i < 14; i++) {
+            if (result.data.results[i]) {
+                temp.push(result.data.results[i])
+            }
         }
     
         setTopDaily(temp)
     }
 
-    const listName = "Top User-Rated Movies"
+    const listName = "Daily Trending Movies"
 
     return (
     <div>
-        {/* <Logo /> */}
-        {/* <p style={{textAlign: "center"}}>
-            <Link to = "/User">Go to User Page Test</Link>
-        </p> */}
-        {/* <Button className="Button">
-            <Link to="/Login">Log in here</Link>
-        </Button> */}
-        <MovieList movieList={topDaily} listName="Top User-Rated Movies" googleObj = {props.googleObj} setAPI_id = {props.setAPI_id}/>
+        <MovieList movieList={topDaily} listName={listName} googleObj = {props.googleObj} setAPI_id = {props.setAPI_id}/>
     </div>
     )
 }
