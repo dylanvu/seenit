@@ -40,18 +40,24 @@ const MoviePage = (props) => {
 
     useEffect(() => {
         async function getMoviebyID() {
+            //console.log(SEARCH_API)
             let result = await Axios.get(SEARCH_API);
-            // console.log(result);
+            //console.log(result.data);
             setMovie(result.data)
+            //console.log(result.data.poster_path)
+            if (result.data.poster_path == null) {
+                setimg_path(poster_not_found)
+                //console.log("Not found")
+            } else {
+                setimg_path(IMG_API + result.data.poster_path)
+                // console.log(img_path)
+            }
         }
         getMoviebyID(props.API_id)
+        console.log(allReview)
+        console.log(allReview.length == 0)
 
         // Check to see if the poster exists, otherwise use a default placeholder image
-        if (movie.poster_path == null) {
-            setimg_path(poster_not_found)
-        } else {
-            setimg_path(IMG_API + movie.poster_path)
-        }
     },[])
 
     //get text from the text box
@@ -106,7 +112,7 @@ const MoviePage = (props) => {
                     </div>
                     <br/>
                     <div>
-                        <h1>All reviews</h1>
+                        {(allReview.length === 0) ? <h1>No Reviews Found</h1> : <h1>All Reviews</h1>}
                     </div>
                     {allReview.map ((review) => (
                         <Review API_id = {movie.id} user = {review.user}
