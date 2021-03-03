@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import database from '../firebase'
 import {useEffect} from 'react'
 
+const IMG_API = 'https://image.tmdb.org/t/p/w1280';
+
 
 //Movie component needs to take in a google object
 function Movie(props) {
@@ -11,7 +13,7 @@ function Movie(props) {
     const [exist, setExistence] = useState(false)
 
     useEffect(() => {
-        check_exist(props.title);
+        check_exist(props.API_id);
     });
 
     function redirectMovie(e) {
@@ -23,8 +25,7 @@ function Movie(props) {
         if (props.googleObj != null && !exist){
             database.ref(`/users/${props.googleObj.googleId}/movies`).push(
                 {
-                    title: props.title,
-                    img: props.url
+                    API_id: props.API_id,
                 }
             )
             setExistence(true);
@@ -36,30 +37,22 @@ function Movie(props) {
 
     //props.id is null from homepage
     //might want to change this? kinda messy and might cause problems if there are two movies of the same name
-    const deleteFromDb = (title) => {
-        if (!props.id){
-            database.ref().child(`users/${props.googleObj.googleId}/movies`).orderByChild('title').equalTo(title)
-            .limitToFirst(1).once('child_added', snap => {
-                if (title === snap.val().title ){
-                    database.ref(`/users/${props.googleObj.googleId}/movies/${snap.key}`).remove()
-                }
-            })
-        }
-        else{
-            database.ref(`/users/${props.googleObj.googleId}/movies/${props.id}`).remove()
-        }
+    const deleteFromDb = () => {
+        database.ref(`/users/${props.googleObj.googleId}/movies/${props.key}`).remove()
         setExistence(false);
     }
 
-    const check_exist = (title) => {
+    const check_exist = (API_id) => {
         if (props.googleObj != null){
-            database.ref().child(`users/${props.googleObj.googleId}/movies`).orderByChild('title').equalTo(title)
+            database.ref().child(`users/${props.googleObj.googleId}/movies`).orderByChild('API_id').equalTo(API_id)
             .limitToFirst(1).once('child_added', snap => {
-                if(title === snap.val().title){
+                if(API_id === snap.val().API_id){
                     setExistence(true);
+                    console.log("true");
                 } 
                 else{
                     setExistence(false);
+                    console.log("false")
                 }  
             })
         }
@@ -79,7 +72,7 @@ function Movie(props) {
 
     return(
         <div className="movie">
-            <img src={props.url} alt={image_name} className="moviePoster"/>
+            <img src={IMG_API + props.url} alt={image_name} className="moviePoster"/>
             <a href={props.url}>
                 <div className="overlay">
                     <div className="movieText">{props.title}</div>
@@ -88,7 +81,7 @@ function Movie(props) {
             <div>
             {
             exist ? 
-                <button className="databaseButton" onClick={() => deleteFromDb(props.title)}>Delete from Favorite Movies</button>
+                <button className="databaseButton" onClick={() => deleteFromDb()}>Delete from Favorite Movies</button>
                 :
                 <button className="databaseButton" onClick={() => saveToDb()}> Add to Favorite Movies</button>
             }

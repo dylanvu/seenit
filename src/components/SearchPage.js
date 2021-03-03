@@ -36,7 +36,11 @@ const SearchPage = (props) => {
             console.log(result.data.results[0]);
             //let search_result = result.data.results
             //setMovies(search_result); // get the movies data using results array
-            setMovies(result.data.results); // get the movies data using results array
+            let top10 = [];
+            for (var i = 0; i < 10; i++){
+                top10.push(result.data.results[i]);
+            }
+            setMovies(top10); // get the movies data using results array
             setSearchstatus(true)
             console.log(movies)
             setQuery("");
@@ -82,7 +86,7 @@ const SearchPage = (props) => {
             {/* list of movies displayed */}
             <div className="search-results-container">
                 {/* {searchStatus ? <MovieList movieList={movies} listName={listName} googleObj = {props.googleObj}/> : <p>Please search for a movie above!</p>} */}
-                {searchStatus ? movies.map(movie => <SearchMovie title={movie.title} poster_path={movie.poster_path} overview={movie.overview} vote_average={movie.vote_average}/>) : <p>Please search for a movie above!</p>}
+                {searchStatus ? <MovieList googleObj={props.googleObj} listName="Search Results" movieList={movies} /> : <p>Please search for a movie above!</p>}
             </div>
         </div>
     );

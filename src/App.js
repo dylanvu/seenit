@@ -78,7 +78,9 @@ function App() {
         <Route exact path="/User">
           {googleObj ? <UserPage googleObj = {googleObj} /> : <p></p>}
         </Route>
-        <Route exact path="/Search" component={SearchPage} />
+        <Route exact path="/Search">
+          {googleObj ? <SearchPage googleObj = {googleObj} /> : <p></p>}
+        </Route>
       </Switch>
     </Router>
   );
