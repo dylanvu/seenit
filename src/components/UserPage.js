@@ -19,18 +19,19 @@ const UserPage = (props) => {
             if (snapshot != null){
                 snapshot.forEach(data => {
                     let movie = {
-                        key: data.key,
                         title: data.val().title,
-                        url: data.val().img
+                        poster_path: data.val().img,
+                        id: data.val().API_id
                     }
                     myMovies.push(movie)
                 })
             }
-            setMovies(movies.concat(myMovies))
+            //console.log(myMovies[0].key)
+            setMovies(myMovies)
         })
     ,[])
 
-
+    //console.log(movies)
     return(
         <div class="UserPageFlex">
             <div className="user">

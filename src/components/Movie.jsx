@@ -12,6 +12,8 @@ function Movie(props) {
     const image_name = "Image of cover for " + props.title
     const [exist, setExistence] = useState(false)
 
+    console.log(props.key)
+
     useEffect(() => {
         check_exist(props.API_id);
     });
@@ -26,6 +28,8 @@ function Movie(props) {
             database.ref(`/users/${props.googleObj.googleId}/movies`).push(
                 {
                     API_id: props.API_id,
+                    title: props.title,
+                    img: props.url
                 }
             )
             setExistence(true);
@@ -35,12 +39,18 @@ function Movie(props) {
         }
     }
 
-    //props.id is null from homepage
-    //might want to change this? kinda messy and might cause problems if there are two movies of the same name
-    const deleteFromDb = () => {
-        database.ref(`/users/${props.googleObj.googleId}/movies/${props.key}`).remove()
+    const deleteFromDb = (API_id) => {
+        if (!props.id){
+            database.ref().child(`users/${props.googleObj.googleId}/movies`).orderByChild('API_id').equalTo(API_id)
+            .limitToFirst(1).once('child_added', snap => {
+                if (API_id === snap.val().API_id ){
+                    database.ref(`/users/${props.googleObj.googleId}/movies/${snap.key}`).remove()
+                }
+            })
+        }
         setExistence(false);
     }
+
 
     const check_exist = (API_id) => {
         if (props.googleObj != null){
@@ -48,11 +58,9 @@ function Movie(props) {
             .limitToFirst(1).once('child_added', snap => {
                 if(API_id === snap.val().API_id){
                     setExistence(true);
-                    console.log("true");
                 } 
                 else{
                     setExistence(false);
-                    console.log("false")
                 }  
             })
         }
@@ -81,7 +89,7 @@ function Movie(props) {
             <div>
             {
             exist ? 
-                <button className="databaseButton" onClick={() => deleteFromDb()}>Delete from Favorite Movies</button>
+                <button className="databaseButton" onClick={() => deleteFromDb(props.API_id)}>Delete from Favorite Movies</button>
                 :
                 <button className="databaseButton" onClick={() => saveToDb()}> Add to Favorite Movies</button>
             }
