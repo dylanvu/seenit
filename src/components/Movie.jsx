@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 // Note that we don't need to import App.css since this component is a child of App.js
 // Assuming movie poster size has the ratio of 4050 pixels wide by 6000 pixels high
 import database from '../firebase'
@@ -80,21 +81,22 @@ function Movie(props) {
 
     return(
         <div className="movie">
-            <img src={IMG_API + props.url} alt={image_name} className="moviePoster"/>
-            <a href={props.url}>
-                <div className="overlay">
-                    <div className="movieText">{props.title}</div>
+            <Link to='/Movie'>
+                <img src={IMG_API + props.url} alt={image_name} className="moviePoster"/>
+                <a>
+                    <div className="overlay">
+                        <div className="movieText">{props.title}</div>
+                    </div>
+                </a>
+                <div>
+                {
+                exist ? 
+                    <button className="databaseButton" onClick={() => deleteFromDb(props.API_id)}>Delete from Favorite Movies</button>
+                    :
+                    <button className="databaseButton" onClick={() => saveToDb()}> Add to Favorite Movies</button>
+                }
                 </div>
-            </a>
-            <div>
-            {
-            exist ? 
-                <button className="databaseButton" onClick={() => deleteFromDb(props.API_id)}>Delete from Favorite Movies</button>
-                :
-                <button className="databaseButton" onClick={() => saveToDb()}> Add to Favorite Movies</button>
-            }
-            </div>
-
+            </Link>
         </div>
     )
 }
