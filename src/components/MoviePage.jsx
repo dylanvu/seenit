@@ -32,7 +32,7 @@ const MoviePage = (props) => {
             if (snapshot != null){
                 snapshot.forEach(data => {
                     let review = {
-                        id: data.key,
+                        API_id: data.val().API_id,
                         user: data.val().user.givenName + ' ' + data.val().user.familyName ,
                         movieTitle: "La la land",
                         reviewContent: data.val().review,
@@ -57,14 +57,16 @@ const MoviePage = (props) => {
     //save new review to the data base 
     function saveReview(){
         if (props.googleObj != null){
-            database.ref(`/users/${props.googleObj.googleId}/movieReviews`).push(
+            database.ref(`/users/${props.googleObj.googleId}/movieReviews/${props.API_id}`).push(
                 {
-                    movie: "La la Land",
+                    API_id: props.API_id,
+                    title: movie.title,
                     review: review
                 }
             )
-            database.ref(`/movieReviews/lalaland`).push(
+            database.ref(`/movieReviews/${props.API_id}`).push(
                 {
+                    API_id: props.API_id,
                     user: props.googleObj,
                     review: review
                 }
