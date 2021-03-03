@@ -1,15 +1,27 @@
 import React from 'react'
 import MovieList from './MovieList'
-import Button from "react-bootstrap/Button";
-import Logo from './Logo.js';
-import { useState } from 'react'
+import Axios from 'axios'
+import { useState, useEffect } from 'react'
 
 import {Link} from "react-router-dom";
 
-const Homepage = (props) => {
+let topDailymovies = []
 
-    
-    const[movies, setMovies] = useState([
+const API_KEY = process.env.REACT_APP_THEMOVIESDB_API_KEY;
+const SEARCH_API = 'https://api.themoviedb.org/3/trending/movie/day?api_key=' + API_KEY; // version 3
+
+async function getDailymovies() {
+    let result = await Axios.get(SEARCH_API);
+
+    // Get only the top 10 movie
+    for (var i = 0; i < 10; i++) {
+        topDailymovies.push(result.data.results[i])
+    }
+    //console.log(top_movies);
+}
+
+const Homepage = (props) => {
+    const [movies, setMovies] = useState([
         {
             key: 1,
             title: "La La Land",
@@ -27,8 +39,11 @@ const Homepage = (props) => {
         }
     ]) 
 
-    const listName = "Top User-Rated Movies"
+    useEffect(() => {
+        getDailymovies()
+    })
 
+    const listName = "Top User-Rated Movies"
 
     return (
     <div>
@@ -39,7 +54,7 @@ const Homepage = (props) => {
         {/* <Button className="Button">
             <Link to="/Login">Log in here</Link>
         </Button> */}
-        <MovieList movieList={movies} listName={listName} googleObj = {props.googleObj} />
+        <MovieList movieList={topDailymovies} listName={listName} googleObj = {props.googleObj} />
     </div>
     )
 }
