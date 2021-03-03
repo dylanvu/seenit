@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
-
+import React from 'react'
 import { GoogleLogin } from 'react-google-login';
 // refresh token
 import { refreshTokenSetup } from '../utils/refreshToken';
-
-import database from '../firebase';
 
 const clientId = process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID;
 

@@ -5,7 +5,7 @@ import Logout from './components/Logout.js';
 import UserPage from './components/UserPage.js';
 import MoviePage from './components/MoviePage';
 import SearchPage from './components/SearchPage.js';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,16 +25,12 @@ function App() {
   const [googleObj, setGoogleObj] = useState();
   const [API_id, setAPI_id] = useState();
 
-  useEffect(() => {
-    console.log("The API ID is: " + API_id);
-  }, [API_id])
-
   return (
     <Router>
       {/* <Logo status={loggedIn}/> */}
       <div className="navbar">
         <div className="headingColimg">
-          <Link to ="/" className="link"><img className="Logo" src={logo} height="100"/></Link>
+          <Link to ="/" className="link"><img className="Logo" src={logo} height="100" alt="SeenIt logo"/></Link>
         </div>
         <div className="headingCol">
           <h1 className="title">SeenIt</h1>
@@ -65,7 +61,7 @@ function App() {
               <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
             </div>
             <div>
-              <p className="headingText">&nbsp; {googleObj ? `Welcome ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
+              <p className="headingText">&nbsp; {googleObj ? `Welcome back, ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
             </div>
           </div>
         </div>
@@ -81,7 +77,7 @@ function App() {
           {googleObj ? <UserPage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)} /> : <p></p>}
         </Route>
         <Route exact path="/Search">
-          {googleObj ? <SearchPage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)} /> : <p></p>}
+          <SearchPage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)} />
         </Route>
       </Switch>
     </Router>
@@ -89,8 +85,3 @@ function App() {
 }
 
 export default App;
-
-{/* <h1 className="title">SeenIt</h1>
-<p className="subheading">The Social Movie Network—in React</p> */}
-
-// Note: we have an issue with MovieList and MyMovieList. Right now, we aren't passing googleProfileObj into MovieList (which is why the button doesn't work to add the movie to the database)

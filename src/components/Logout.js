@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GoogleLogout } from 'react-google-login';
 
 const clientId = process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID //insert client id here
