@@ -54,8 +54,8 @@ const MoviePage = (props) => {
             }
         }
         getMoviebyID(props.API_id)
-        console.log(allReview)
-        console.log(allReview.length == 0)
+        // console.log(allReview)
+        // console.log(allReview.length == 0)
 
         // Check to see if the poster exists, otherwise use a default placeholder image
     },[])
@@ -95,13 +95,14 @@ const MoviePage = (props) => {
                 <img src={img_path} alt={"Movie Poster of " + movie.title} className="MoviePagePoster" />
             </div>
             <div className="MovieContent">
-                <h1>{movie.title}</h1>
-                <p>
+                <h1 className="MovieTitle">{movie.title}</h1>
+                <p className="overview">
                     {movie.overview}
                 </p>
+                <br/>
                 <div>
                     <div>
-                        <h1>Write a review</h1>
+                        {(allReview.length === 0) ? <h1>Write the First Review</h1> : <h1>Write a Review</h1>}
                     </div>
                     <div className="WriteReviewContainer">
                         <div className="WriteReview">
