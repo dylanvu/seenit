@@ -34,7 +34,7 @@ const UserPage = (props) => {
             <div className="user">
                 {/* <UserPic /> Disabled this component for now since it is broken*/}
                 {/* <img src ="https://i.ytimg.com/vi/4y_lc8m4vSc/hqdefault.jpg" /> */}
-                <img className="GooglePic" src = {props.googleObj.imageUrl} />
+                <img className="GooglePic" src = {props.googleObj.imageUrl} alt="Your Profile Icon"/>
                 <h3 style={{fontSize: "40px"}}>{props.googleObj.name}</h3>
                 <AboutMe />
             </div>

@@ -88,15 +88,6 @@ const MoviePage = (props) => {
                 <p>
                     {movie.overview}
                 </p>
-                <h2>Director:&nbsp;
-                    <span>Joe Director</span>
-                </h2>
-                <h2>Writer:&nbsp;
-                    <span>Joe Writer</span>
-                </h2>
-                <h2>Starring:&nbsp;
-                    <span>Ryan Gosling</span>
-                </h2>
                 <div>
                     <div>
                         <h1>Write a review</h1>

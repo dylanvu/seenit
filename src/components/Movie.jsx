@@ -17,18 +17,13 @@ function Movie(props) {
     useEffect(() => {
         check_exist(props.API_id);
         let img_src = IMG_API + props.url;
-        if (props.url == undefined) {
+        if (props.url === undefined) {
             console.log("Poster was not found")
             setimg_path(poster_not_found)
         } else {
             setimg_path(img_src)
         }
-    });
-
-    function redirectMovie(e) {
-        e.preventDefault();
-        console.log("The movie poster was clicked");
-    }
+    }, []);
 
     const saveToDb = () => {
         if (props.googleObj != null && !exist){
