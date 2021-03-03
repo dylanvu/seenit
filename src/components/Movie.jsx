@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 // Note that we don't need to import App.css since this component is a child of App.js
 // Assuming movie poster size has the ratio of 4050 pixels wide by 6000 pixels high
-import MoviePage from './MoviePage';
 import database from '../firebase';
 import {useEffect} from 'react';
 
@@ -79,15 +78,14 @@ function Movie(props) {
         })
     }*/
 
+    function setID() {
+        props.setAPI_id(props.API_id)
+    }
+
     return(
         <div className="movie">
                 <img src={IMG_API + props.url} alt={image_name} className="moviePoster"/>
-                <Link to={{
-                    pathname: '/Movie',
-                    state: {
-                        API_id: props.API_id
-                    }
-                }}>
+                <Link to='/Movie' onClick={setID}>
                     <div className="overlay">
                         <div className="movieText">{props.title}</div>
                     </div>

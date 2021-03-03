@@ -1,10 +1,7 @@
 import MovieList from './MovieList'
 import AboutMe from './AboutMe.js'
 import ReviewList from './ReviewList'
-import UserPic from './UserPic.js'
-import { useState } from 'react'
-import Movie from './Movie.jsx'
-import {useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import database from '../firebase'
 
 
@@ -43,7 +40,7 @@ const UserPage = (props) => {
             </div>
             <div className="UserContent">
                 <div className="MyMovies">
-                    <MovieList listName = "My Favorite Movies" googleObj = {props.googleObj} movieList = {movies}/>
+                    <MovieList listName = "My Favorite Movies" googleObj = {props.googleObj} movieList = {movies} setAPI_id = {props.setAPI_id}/>
                 </div>
                 <br/>
                 <div className="MyReviews">

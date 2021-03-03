@@ -1,19 +1,17 @@
 import Homepage from './components/Homepage.jsx';
 import logo from './components/logo.png'
-import Loginpage from './components/Loginpage.jsx';
 import Login from './components/Login.js';
 import Logout from './components/Logout.js';
 import UserPage from './components/UserPage.js';
 import MoviePage from './components/MoviePage';
 import SearchPage from './components/SearchPage.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-import { render } from '@testing-library/react';
 
 
 import './App.css';
@@ -25,6 +23,11 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false)
   const [googleObj, setGoogleObj] = useState();
+  const [API_id, setAPI_id] = useState();
+
+  useEffect(() => {
+    console.log("The API ID is: " + API_id);
+  }, [API_id])
 
   return (
     <Router>
@@ -69,16 +72,16 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <Homepage googleObj = {googleObj} />
+          <Homepage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)}/>
         </Route>
         <Route exact path="/Movie">
-          {googleObj ? <MoviePage googleObj = {googleObj} /> : <p></p>}
+          {googleObj ? <MoviePage googleObj = {googleObj} API_id = {API_id}/> : <p></p>}
         </Route>
         <Route exact path="/User">
-          {googleObj ? <UserPage googleObj = {googleObj} /> : <p></p>}
+          {googleObj ? <UserPage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)} /> : <p></p>}
         </Route>
         <Route exact path="/Search">
-          {googleObj ? <SearchPage googleObj = {googleObj} /> : <p></p>}
+          {googleObj ? <SearchPage googleObj = {googleObj} setAPI_id = {(API_id) => setAPI_id(API_id)} /> : <p></p>}
         </Route>
       </Switch>
     </Router>

@@ -3,13 +3,9 @@ import MovieList from './MovieList'
 import Axios from 'axios'
 import { useState, useEffect } from 'react'
 
-import {Link} from "react-router-dom";
-
 
 const API_KEY = process.env.REACT_APP_THEMOVIESDB_API_KEY;
 const SEARCH_API = 'https://api.themoviedb.org/3/trending/movie/day?api_key=' + API_KEY; // version 3
-
-
 
 const Homepage = (props) => {
 
@@ -42,7 +38,7 @@ const Homepage = (props) => {
         {/* <Button className="Button">
             <Link to="/Login">Log in here</Link>
         </Button> */}
-        <MovieList movieList={topDaily} listName="Top User-Rated Movies" googleObj = {props.googleObj} />
+        <MovieList movieList={topDaily} listName="Top User-Rated Movies" googleObj = {props.googleObj} setAPI_id = {props.setAPI_id}/>
     </div>
     )
 }

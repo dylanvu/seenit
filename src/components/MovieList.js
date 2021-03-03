@@ -1,6 +1,4 @@
-import PropTypes from 'prop-types'
 import Movie from './Movie.jsx'
-import { useRef } from "react"
 
 
 const MovieList = (props) => {
@@ -13,7 +11,7 @@ const MovieList = (props) => {
             </div> 
             <div className = "movie-container">
                 {props.movieList.map((movie) => (
-                    <Movie API_id={movie.id} url={movie.poster_path} title={movie.title} googleObj = {props.googleObj}/>
+                    <Movie API_id={movie.id} url={movie.poster_path} title={movie.title} googleObj = {props.googleObj} setAPI_id = {props.setAPI_id}/>
                 ))}
             </div>
         </div>
