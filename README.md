@@ -3,7 +3,6 @@ Built by:
 * Dylan Vu
 * Kelly Lin
 * Jennifer Park
-* 
 Logo designed by:
 * Steven Man
 
