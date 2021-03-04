@@ -18,6 +18,26 @@ const MoviePage = (props) => {
 
     const SEARCH_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + "?api_key=" + API_KEY;
 
+    // Future TODO: Consoldate into one mega useEffect
+
+    useEffect(() => {
+        // Check to see if there is anything in the sessionStorage (both movie and image path) and retrieve it if so
+        if (sessionStorage.hasOwnProperty("MoviePage")) {
+            // console.log("Get last movie")
+            // console.log(sessionStorage.getItem("MoviePage"))
+            let savedMovie = sessionStorage.getItem("MoviePage");
+            // console.log(savedMovie)
+            savedMovie = JSON.parse(savedMovie);
+            console.log(savedMovie);
+            setMovie(savedMovie);
+        }
+        if (sessionStorage.hasOwnProperty("img_path")) {
+            let savedimg_path = sessionStorage.getItem("img_path");
+            savedimg_path = JSON.parse(savedimg_path);
+            setimg_path(savedimg_path);
+        }
+    }, []);
+
     //get all reviews for this movie
     useEffect(() => 
         database.ref(`movieReviews/${props.API_id}`).on("value", (snapshot) =>{
@@ -41,24 +61,41 @@ const MoviePage = (props) => {
     useEffect(() => {
         async function getMoviebyID() {
             //console.log(SEARCH_API)
-            let result = await Axios.get(SEARCH_API);
+            console.log("Async")
+            let result = null
+            try {
+                result = await Axios.get(SEARCH_API);
+            } catch(e) {
+                console.error(e);
+            }
+            //console.log(result)
             //console.log(result.data);
-            setMovie(result.data)
-            //console.log(result.data.poster_path)
-            if (result.data.poster_path == null) {
-                setimg_path(poster_not_found)
-                //console.log("Not found")
-            } else {
-                setimg_path(IMG_API + result.data.poster_path)
-                // console.log(img_path)
+            if (result !== null) {
+                console.log("Movie set")
+                setMovie(result.data)
+                //console.log(result.data.poster_path)
+                if (result.data.poster_path == null) {
+                    setimg_path(poster_not_found)
+                    //console.log("Not found")
+                } else {
+                    setimg_path(IMG_API + result.data.poster_path)
+                    // console.log(img_path)
+                }
             }
         }
         getMoviebyID(props.API_id)
-        // console.log(allReview)
-        // console.log(allReview.length == 0)
-
-        // Check to see if the poster exists, otherwise use a default placeholder image
     },[])
+
+    // Save current page data into sessionStorage so that when window refreshes on accident, data is preserved
+    useEffect(() => {
+        let JSONmovie = JSON.stringify(movie)
+        sessionStorage.setItem("MoviePage", JSONmovie)
+    }, [movie])
+
+    useEffect(() => {
+        let JSONimg_path = JSON.stringify(img_path)
+        sessionStorage.setItem("img_path", JSONimg_path)
+    }, [img_path])
 
     //get text from the text box
     function getData(val){

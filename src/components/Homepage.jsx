@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 
 const API_KEY = process.env.REACT_APP_THEMOVIESDB_API_KEY;
 const DAILY_SEARCH_API = 'https://api.themoviedb.org/3/trending/movie/day?api_key=' + API_KEY; // version 3
-const WEEKLY_SEARCH_API = 'https://api.themoviedb.org/3/trending/all/week?api_key=' + API_KEY;
+const WEEKLY_SEARCH_API = 'https://api.themoviedb.org/3/trending/movie/week?api_key=' + API_KEY;
 
 const Homepage = (props) => {
 
