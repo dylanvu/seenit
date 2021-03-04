@@ -11,51 +11,72 @@ const IMG_API = 'https://image.tmdb.org/t/p/w1280';
 
 const MoviePage = (props) => {
 
-    const[review, setReview] = useState("")
-    const[allReview, setAllReview] = useState([])
+    const [review, setReview] = useState("")
+    const [allReview, setAllReview] = useState([])
     const [movie, setMovie] = useState([])
-    const [credits, setCredits] = useState([])
     const [director, setDirector] = useState("")
     const [writer, setWriter] = useState("")
     const [img_path, setimg_path] = useState();
-    const [API_id, setAPI_id] = useState();
-
-    const SEARCH_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + "?api_key=" + API_KEY;
-    const GETCREDITS_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + '/credits?api_key=' + API_KEY;
-
-    // Future TODO: Consoldate into one mega useEffect
 
     useEffect(() => {
-        // Check to see if there is anything in the sessionStorage (both movie and image path) and retrieve it if so
-        if (sessionStorage.hasOwnProperty("MoviePage")) {
-            // console.log("Get last movie")
-            // console.log(sessionStorage.getItem("MoviePage"))
-            let savedMovie = sessionStorage.getItem("MoviePage");
-            // console.log(savedMovie)
-            savedMovie = JSON.parse(savedMovie);
-            console.log(savedMovie);
-            setMovie(savedMovie);
-        }
-        if (sessionStorage.hasOwnProperty("img_path")) {
-            let savedimg_path = sessionStorage.getItem("img_path");
-            savedimg_path = JSON.parse(savedimg_path);
-            setimg_path(savedimg_path);
-        }
         
+        // Use this to set the current API_id irregardless of whether the user is coming from the homepage or refreshing
+        let currentAPI = props.API_id
+
+        // If the user is coming from a refresh, props.API_id will be null. So, change the current API_id to the stored one in session.
         if (props.API_id) {
-            setAPI_id(props.API_id)
+            //console.log("Props API_ID is: " + props.API_id)
         } else if (sessionStorage.hasOwnProperty("API_id")) {
-            console.log("Retrieving API")
+            console.log("Retrieving API_id from session")
             let savedAPI_id = sessionStorage.getItem("API_id");
             savedAPI_id = JSON.parse(savedAPI_id);
-            console.log(savedAPI_id);
-            setAPI_id(savedAPI_id);
+            currentAPI = savedAPI_id;
         }
-    }, []);
 
-    //get all reviews for this movie
-    useEffect(() => 
-        database.ref(`movieReviews/${props.API_id}`).on("value", (snapshot) =>{
+        let JSON_id = JSON.stringify(currentAPI)
+        sessionStorage.setItem("API_id", JSON_id)
+        //console.log("currentAPI: " + currentAPI)
+
+        const SEARCH_API = 'https://api.themoviedb.org/3/movie/' + currentAPI + "?api_key=" + API_KEY;
+        const GETCREDITS_API = 'https://api.themoviedb.org/3/movie/' + currentAPI + '/credits?api_key=' + API_KEY;
+
+        async function getMoviebyID() {
+            let result = await Axios.get(SEARCH_API);
+            if (result !== null) {
+                console.log("Movie info successfully found")
+                setMovie(result.data)
+                //console.log(result.data.poster_path)
+                if (result.data.poster_path == null) {
+                    setimg_path(poster_not_found)
+                    //console.log("Not found")
+                } else {
+                    setimg_path(IMG_API + result.data.poster_path)
+                    // console.log(img_path)
+                }
+            }
+        }
+        getMoviebyID()
+
+        async function getCredits() {
+            let result = await Axios.get(GETCREDITS_API)
+            //console.log(result.data)
+            //console.log(result.data.crew)
+            let crew = result.data.crew
+            for (var i = 0; i < crew.length; i++){
+                if (crew[i].job == "Director"){
+                    //console.log(crew[i].name)
+                    setDirector(crew[i])
+                }
+                if (crew[i].job == "Writer" || crew[i].job == "Screenplay"){
+                    //onsole.log(crew[i].name)
+                    setWriter(crew[i])
+                }
+            }
+        }
+        getCredits()
+
+        //get all reviews for this movie
+        database.ref(`movieReviews/${currentAPI}`).on("value", (snapshot) =>{
             let reviews = []
             if (snapshot != null){
                 snapshot.forEach(data => {
@@ -71,73 +92,9 @@ const MoviePage = (props) => {
             }
             setAllReview(reviews)
         })
-    ,[]) 
 
-    useEffect(() => {
+    }, []);
 
-        async function getMoviebyID() {
-            //console.log(SEARCH_API)
-            //console.log("Async")
-            let result = null
-            try {
-                result = await Axios.get(SEARCH_API);
-            } catch(e) {
-                console.error(e);
-            }
-            //console.log(result)
-            //console.log(result.data);
-            if (result !== null) {
-                console.log("Movie set")
-                setMovie(result.data)
-                //console.log(result.data.poster_path)
-                if (result.data.poster_path == null) {
-                    setimg_path(poster_not_found)
-                    //console.log("Not found")
-                } else {
-                    setimg_path(IMG_API + result.data.poster_path)
-                    // console.log(img_path)
-                }
-            }
-        }
-        getMoviebyID(props.API_id)
-
-        async function getCredits() {
-            let result = await Axios.get(GETCREDITS_API)
-            //console.log(result.data)
-            setCredits(result.data)
-            //console.log(result.data.crew)
-            let crew = result.data.crew
-            for (var i = 0; i < crew.length; i++){
-                if (crew[i].job == "Director"){
-                    //console.log(crew[i].name)
-                    setDirector(crew[i])
-                }
-                if (crew[i].job == "Writer"){
-                    //onsole.log(crew[i].name)
-                    setWriter(crew[i])
-                }
-            }
-        }
-        getCredits(props.API_id)
-
-    },[])
-
-    // Save current page data into sessionStorage so that when window refreshes on accident, data is preserved
-    useEffect(() => {
-        let JSONmovie = JSON.stringify(movie)
-        sessionStorage.setItem("MoviePage", JSONmovie)
-    }, [movie])
-
-    useEffect(() => {
-        let JSONimg_path = JSON.stringify(img_path)
-        sessionStorage.setItem("img_path", JSONimg_path)
-    }, [img_path])
-
-    useEffect(() => {
-        let JSONAPI_id = JSON.stringify(API_id)
-        sessionStorage.setItem("API_id", JSONAPI_id)
-        console.log(JSONAPI_id)
-    }, [API_id])
 
     //get text from the text box
     function getData(val){
@@ -186,7 +143,7 @@ const MoviePage = (props) => {
                     <h2>Director:&nbsp;
                         <span>{director.name}</span>
                     </h2>
-                    <h2>Writer:&nbsp;
+                    <h2>Screenplay/Writer:&nbsp;
                         <span>{writer.name}</span>
                     </h2>
                     <br/>
