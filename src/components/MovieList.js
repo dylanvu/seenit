@@ -24,7 +24,7 @@ const MovieList = (props) => {
             <br/>
             <div className = "movie-container">
                 {props.movieList.map((movie) => (
-                    <Movie API_id={movie.id} url={movie.poster_path} title={movie.title} googleObj={props.googleObj} setAPI_id={props.setAPI_id}/>
+                    <Movie db_key={movie.db_key} API_id={movie.id} url={movie.poster_path} title={movie.title} googleObj={props.googleObj} setAPI_id={props.setAPI_id}/>
                 ))}
             </div>
         </div>
