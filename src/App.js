@@ -61,7 +61,7 @@ function App() {
               <Login loggedIn={loggedIn} setLoggedIn = {(bool) => setLoggedIn(bool)} setGoogleObj={(obj) => setGoogleObj(obj)}/>}
             </div>
             <div>
-              <p className="headingText">&nbsp; {googleObj ? `Welcome back, ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
+              <p className="headingText">&nbsp; {loggedIn && googleObj ? `Welcome back, ${googleObj.name}!` : `Not logged in. Please log in.`}&nbsp;</p>
             </div>
           </div>
         </div>

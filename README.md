@@ -4,7 +4,7 @@ Built by:
 * Kelly Lin
 * Jennifer Park
 * Steven Man
-* Maximillian Shen
+* Max Shen
 
 This is our project for Coders SB's React Workshop.
 

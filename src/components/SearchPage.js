@@ -4,6 +4,7 @@ import Axios from 'axios'
 import Alert from './Alert'
 import MovieList from './MovieList'
 
+
 const SearchPage = (props) => {
     let [query, setQuery] = useState('');
     // let [movies, setMovies] = useState([{
@@ -40,7 +41,8 @@ const SearchPage = (props) => {
                 if (result.data.results[i])
                     top10.push(result.data.results[i]);
             }
-            setMovies(top10); // get the movies data using results array
+            setMovies([]); // get the movies data using results array
+            setMovies([...top10])
             setSearchstatus(true)
             //console.log(movies)
             setQuery("");
@@ -64,7 +66,7 @@ const SearchPage = (props) => {
             getData();
             setQuery('')
         }
-    };
+    }
 
     // useEffect(() => {
     //     console.log(movies)
