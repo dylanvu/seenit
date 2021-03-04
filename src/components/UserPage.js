@@ -16,6 +16,7 @@ const UserPage = (props) => {
             if (snapshot != null){
                 snapshot.forEach(data => {
                     let movie = {
+                        db_key: data.key,
                         title: data.val().title,
                         poster_path: data.val().img,
                         id: data.val().API_id

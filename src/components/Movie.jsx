@@ -43,15 +43,8 @@ function Movie(props) {
         }
     }
 
-    const deleteFromDb = (API_id) => {
-        database.ref().child(`users/${props.googleObj.googleId}/movies`).orderByChild('API_id').equalTo(API_id)
-        .limitToFirst(1).once('child_added', snap => {
-            if (API_id === snap.val().API_id ){
-                database.ref(`/users/${props.googleObj.googleId}/movies/${snap.key}`).remove()
-            }
-        })
-
-        setExistence(false);
+    function deleteFromDb(db_key){
+        database.ref(`/users/${props.googleObj.googleId}/movies/${db_key}`).remove()
     }
 
 
@@ -98,7 +91,7 @@ function Movie(props) {
             <div>
                 {
                 exist ? 
-                    <button className="databaseButton" onClick={() => deleteFromDb(props.API_id)}>Delete from Favorite Movies</button>
+                    <button className="databaseButton" onClick={() => deleteFromDb(props.db_key)}>Delete from Favorite Movies</button>
                     :
                     <button className="databaseButton" onClick={() => saveToDb()}> Add to Favorite Movies</button>
                 }
