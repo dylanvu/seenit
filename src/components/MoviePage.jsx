@@ -135,7 +135,12 @@ const MoviePage = (props) => {
                     <img src={img_path} alt={"Movie Poster of " + movie.title} className="MoviePagePoster" />
                 </div>
                 <div className="MovieContent">
-                    <h1 className="MovieTitle">{movie.title}</h1>
+                    <h1>
+                        <span className="MovieTitle">{movie.title}</span>
+                        <div>
+                            <span className="MovieRelease">({movie.release_date})</span>
+                        </div>
+                    </h1> 
                     <p className="overview">
                         {movie.overview}
                     </p>

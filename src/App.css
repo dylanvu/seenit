@@ -374,6 +374,11 @@ div .navbar img {
   text-decoration: underline;
 }
 
+.MovieContent .MovieRelease {
+  font-size: 30px;
+  text-decoration: none;
+}
+
 .MovieContent h1 {
   text-align: center;
   font-size: 30px;
