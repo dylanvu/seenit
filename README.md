@@ -3,9 +3,8 @@ Built by:
 * Dylan Vu
 * Kelly Lin
 * Jennifer Park
-
-Logo designed by:
 * Steven Man
+* Max Shen
 
 This is our project for Coders SB's React Workshop.
 
