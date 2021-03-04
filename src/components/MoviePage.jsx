@@ -34,7 +34,7 @@ const MoviePage = (props) => {
                     reviews.push(review)
                 })
             }
-            setAllReview(allReview.concat(reviews))
+            setAllReview(reviews)
         })
     ,[]) 
 
