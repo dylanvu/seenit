@@ -18,6 +18,7 @@ const MoviePage = (props) => {
     const [director, setDirector] = useState("")
     const [writer, setWriter] = useState("")
     const [img_path, setimg_path] = useState();
+    const [API_id, setAPI_id] = useState();
 
     const SEARCH_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + "?api_key=" + API_KEY;
     const GETCREDITS_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + '/credits?api_key=' + API_KEY;
@@ -39,6 +40,16 @@ const MoviePage = (props) => {
             let savedimg_path = sessionStorage.getItem("img_path");
             savedimg_path = JSON.parse(savedimg_path);
             setimg_path(savedimg_path);
+        }
+        
+        if (props.API_id) {
+            setAPI_id(props.API_id)
+        } else if (sessionStorage.hasOwnProperty("API_id")) {
+            console.log("Retrieving API")
+            let savedAPI_id = sessionStorage.getItem("API_id");
+            savedAPI_id = JSON.parse(savedAPI_id);
+            console.log(savedAPI_id);
+            setAPI_id(savedAPI_id);
         }
     }, []);
 
@@ -63,9 +74,10 @@ const MoviePage = (props) => {
     ,[]) 
 
     useEffect(() => {
+
         async function getMoviebyID() {
             //console.log(SEARCH_API)
-            console.log("Async")
+            //console.log("Async")
             let result = null
             try {
                 result = await Axios.get(SEARCH_API);
@@ -91,17 +103,17 @@ const MoviePage = (props) => {
 
         async function getCredits() {
             let result = await Axios.get(GETCREDITS_API)
-            console.log(result.data)
+            //console.log(result.data)
             setCredits(result.data)
-            console.log(result.data.crew)
+            //console.log(result.data.crew)
             let crew = result.data.crew
             for (var i = 0; i < crew.length; i++){
                 if (crew[i].job == "Director"){
-                    console.log(crew[i].name)
+                    //console.log(crew[i].name)
                     setDirector(crew[i])
                 }
                 if (crew[i].job == "Writer"){
-                    console.log(crew[i].name)
+                    //onsole.log(crew[i].name)
                     setWriter(crew[i])
                 }
             }
@@ -120,6 +132,12 @@ const MoviePage = (props) => {
         let JSONimg_path = JSON.stringify(img_path)
         sessionStorage.setItem("img_path", JSONimg_path)
     }, [img_path])
+
+    useEffect(() => {
+        let JSONAPI_id = JSON.stringify(API_id)
+        sessionStorage.setItem("API_id", JSONAPI_id)
+        console.log(JSONAPI_id)
+    }, [API_id])
 
     //get text from the text box
     function getData(val){
