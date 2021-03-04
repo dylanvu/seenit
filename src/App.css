@@ -457,6 +457,19 @@ div .navbar img {
   background-color: #6B9080;
 }
 
+.reviewButton {
+  width: 200px;
+  text-align: center;
+  background-color: #6B9080;
+  border: solid 3px #6B9080;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 10px;
+  transition: background-color 0.5s;
+  margin-left: 70%;
+}
+
 /* CSS for the SearchPage */
 
 .SearchPage {

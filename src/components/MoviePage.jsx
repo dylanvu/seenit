@@ -68,17 +68,19 @@ const MoviePage = (props) => {
     //save new review to the data base 
     function saveReview(){
         if (props.googleObj != null){
-            database.ref(`/users/${props.googleObj.googleId}/movieReviews`).push(
-                {
-                    API_id: props.API_id,
-                    title: movie.title,
-                    review: review
-                }
-            )
-            database.ref(`/movieReviews/${props.API_id}`).push(
+            var newPostRef = database.ref(`/movieReviews/${props.API_id}`).push(
                 {
                     API_id: props.API_id,
                     user: props.googleObj,
+                    review: review
+                }
+            )
+            var push_key = newPostRef.key;
+            database.ref(`/users/${props.googleObj.googleId}/movieReviews`).push(
+                {
+                    db_key_2: push_key,
+                    API_id: props.API_id,
+                    title: movie.title,
                     review: review
                 }
             )
