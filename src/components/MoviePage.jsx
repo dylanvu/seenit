@@ -14,9 +14,13 @@ const MoviePage = (props) => {
     const[review, setReview] = useState("")
     const[allReview, setAllReview] = useState([])
     const [movie, setMovie] = useState([])
+    const [credits, setCredits] = useState([])
+    const [director, setDirector] = useState("")
+    const [writer, setWriter] = useState("")
     const [img_path, setimg_path] = useState();
 
     const SEARCH_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + "?api_key=" + API_KEY;
+    const GETCREDITS_API = 'https://api.themoviedb.org/3/movie/' + props.API_id + '/credits?api_key=' + API_KEY;
 
     //get all reviews for this movie
     useEffect(() => 
@@ -56,6 +60,25 @@ const MoviePage = (props) => {
         getMoviebyID(props.API_id)
         // console.log(allReview)
         // console.log(allReview.length == 0)
+
+        async function getCredits() {
+            let result = await Axios.get(GETCREDITS_API)
+            console.log(result.data)
+            setCredits(result.data)
+            console.log(result.data.crew)
+            let crew = result.data.crew
+            for (var i = 0; i < crew.length; i++){
+                if (crew[i].job == "Director"){
+                    console.log(crew[i].name)
+                    setDirector(crew[i])
+                }
+                if (crew[i].job == "Writer"){
+                    console.log(crew[i].name)
+                    setWriter(crew[i])
+                }
+            }
+        }
+        getCredits(props.API_id)
 
         // Check to see if the poster exists, otherwise use a default placeholder image
     },[])
@@ -101,6 +124,13 @@ const MoviePage = (props) => {
                     <p className="overview">
                         {movie.overview}
                     </p>
+                    <h1 className = "MovieCredits">Credits</h1>
+                    <h2>Director:&nbsp;
+                        <span>{director.name}</span>
+                    </h2>
+                    <h2>Writer:&nbsp;
+                        <span>{writer.name}</span>
+                    </h2>
                     <br/>
                     <div>
                         <div>
