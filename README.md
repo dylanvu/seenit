@@ -13,3 +13,6 @@ SeenIt allows for users to log in via their Google account to search up, store m
 You can find our working version [here](http://seenit-bfe8f.web.app/).
 
 Please note that your email must be registered on the Google Cloud console in order to log into this app.
+
+## Known Issues
+* When you attempt to refresh any page from routing, the website is unable to find the page.
