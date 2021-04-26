@@ -1,4 +1,11 @@
 # SeenIt
+## Tech and APIs Used
+* React
+* Create-React-App
+* Firebase Hosting and Firebase Database
+* Axios (API Calls)
+* MoviesDB (Movie information database that we made API calls to)
+
 Built by:
 * Dylan Vu
 * Kelly Lin
